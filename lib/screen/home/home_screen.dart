@@ -1,5 +1,4 @@
-import 'package:ecommerce/class/featured_poduct_class.dart';
-import 'package:ecommerce/class/recomended_product.dart';
+import 'package:ecommerce/provider/product_provider.dart';
 import 'package:ecommerce/screen/home/widget/Each_categorey_desgin.dart';
 import 'package:ecommerce/screen/home/widget/featured_productdesgin_screen.dart';
 import 'package:ecommerce/screen/home/widget/rcmnd_product.dart';
@@ -12,6 +11,8 @@ import 'package:ecommerce/widget/caustom_heading.dart';
 import 'package:ecommerce/widget/caustom_text.dart';
 import 'package:ecommerce/widget/custom_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import '../../class/categorey_class.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -22,6 +23,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<Productprovider>(context, listen: false).addfeaturedProducts();
+      Provider.of<Productprovider>(context, listen: false).addrecomendedProducts();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,9 +80,12 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(left: GetScreenSize.getScreenWidth(context) * 0.04),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => FeaturedProductDesgin(img: featuredProducts[index].img, name: featuredProducts[index].name, price: featuredProducts[index].price),
+              itemBuilder: (context, index) => FeaturedProductDesgin(
+                  img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
+                  name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
+                  price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price),
               separatorBuilder: (context, index) => const SizedBox(width: 20),
-              itemCount: featuredProducts.length)),
+              itemCount: Provider.of<Productprovider>(context, listen: true).featuredproductslist.length)),
       Container(
           color: Appcolors.boxcoloronboarding.withOpacity(0.05),
           height: GetScreenSize.getScreenWidth(context) * 0.5,
@@ -86,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               CaustomText(
                   text: Appstrings.home2imagetextsubtitle, color: Appcolors.black.withOpacity(0.44), size: GetScreenSize.getScreenWidth(context) * 0.065, maxline: 2, fontWeight: FontWeight.bold)
             ]),
-            Image.asset(Appassets.ob2),
+            Image.asset(Appassets.ob3)
           ])),
       Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
@@ -106,9 +119,12 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.only(left: GetScreenSize.getScreenWidth(context) * 0.04),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => RcmndProductScreen(img: recomendedProducts[index].img, title: recomendedProducts[index].name, price: recomendedProducts[index].price),
+            itemBuilder: (context, index) => RcmndProductScreen(
+                img: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].image,
+                title: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].title,
+                price: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].price),
             separatorBuilder: (context, index) => const SizedBox(width: 3),
-            itemCount: recomendedProducts.length),
+            itemCount: Provider.of<Productprovider>(context, listen: true).recomendedproductslist.length),
       ),
       Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
@@ -143,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: GetScreenSize.getScreenWidth(context) * 0.54,
             decoration: BoxDecoration(color: Appcolors.white, borderRadius: BorderRadius.circular(15)),
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.23, child: Image.asset(Appassets.feature1, fit: BoxFit.fill)),
+              SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.23, child: Image.asset(Appassets.ob2, fit: BoxFit.fill)),
               Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
                 CaustomText(text: Appstrings.homeTopCollectionH3, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
                 CaustomText(text: Appstrings.homeTopCollectionS3, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)

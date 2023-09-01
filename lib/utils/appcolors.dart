@@ -8,4 +8,9 @@ class Appcolors {
   static var browncolorbutton = const Color(0xFF2D201C);
   static var grey = const Color(0xFF9B9B9B);
   static var circlecontainercolor = const Color(0x7FC2C6B5);
+  static var discover1TileColor = const Color(0xFFA3A798);
+  static var discover2TileColor = Color(0xFF898280);
+  static var discover3TileColor = Color(0xFF44565C);
+  static var discover4TileColor = Color(0xFFB9AEB2);
+  static var purpleColor = Color.fromARGB(255, 160, 93, 124);
 }

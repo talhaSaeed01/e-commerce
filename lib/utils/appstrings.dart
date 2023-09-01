@@ -92,7 +92,6 @@ class Appstrings {
   static var homeTopCollectionH2 = 'Summer Collection 2021';
   static var homeTopCollectionS1 = 'FOR SLIM\n& BEAUTY';
   static var homeTopCollectionS2 = 'Most \n fabulous design';
-
   static var homeTopCollectionH3 = 'T-Shirts';
   static var homeTopCollectionH4 = 'Dresses';
   static var homeTopCollectionS3 = 'The \nOffice\nLife';
@@ -100,4 +99,16 @@ class Appstrings {
   // ........................Discover Screen....................
   static var dicoverscreentitle = "Discover";
   static var discoverappbarhint = 'Search...';
+  static var discovertitle1 = 'Clothing';
+  static var discovertitle2 = 'Bags';
+  static var discovertitle3 = 'Shoes';
+  static var discovertitle4 = 'Jacket';
+  //........................SearchScreen......................
+  static var searchtitle1 = 'Reacent Searches';
+  static var nothinghere = "Nothing is search here";
+  static var searchtitle2 = 'Popular this week';
+  //..........................Drawer.........................
+  static var drawertitle = 'Filter';
+  static var drawerprice = 'Price';
+  static var drawercolor = 'Color';
 }

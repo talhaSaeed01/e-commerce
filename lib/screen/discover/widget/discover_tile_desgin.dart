@@ -9,9 +9,9 @@ class discovertiledesgin extends StatefulWidget {
   double containerHieght;
   double containerWidth;
   String title;
-  Color titlecolor;
+  Color tilecolor;
   Color circlecolor;
-  discovertiledesgin({super.key, required this.containerHieght, required this.containerWidth, required this.title, required this.titlecolor, required this.img, required this.circlecolor});
+  discovertiledesgin({super.key, required this.containerHieght, required this.containerWidth, required this.title, required this.tilecolor, required this.img, required this.circlecolor});
 
   @override
   State<discovertiledesgin> createState() => _discovertiledesginState();
@@ -27,28 +27,29 @@ class _discovertiledesginState extends State<discovertiledesgin> {
           child: Container(
               width: widget.containerWidth,
               height: widget.containerHieght,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Appcolors.grey.withOpacity(0.15)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: widget.tilecolor.withOpacity(0.45)),
               child: Padding(
                 padding: const EdgeInsets.all(19.0),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  CaustomText(text: widget.title, color: widget.titlecolor, size: 23, maxline: 1, fontWeight: FontWeight.bold),
+                  CaustomText(text: widget.title, color: Appcolors.black, size: 23, maxline: 1, fontWeight: FontWeight.bold),
                 ]),
               )),
         ),
         Positioned(
-            right: GetScreenSize.getScreenWidth(context) * 0.001,
-            top: GetScreenSize.getScreenWidth(context) * 0.1,
+            right: GetScreenSize.getScreenWidth(context) * 0.08,
+            top: GetScreenSize.getScreenWidth(context) * 0.12,
             child: Container(
                 height: GetScreenSize.getScreenWidth(context) * 0.28,
                 width: GetScreenSize.getScreenWidth(context) * 0.47,
                 decoration: ShapeDecoration(color: widget.circlecolor, shape: const CircleBorder()))),
         Positioned(
-            right: GetScreenSize.getScreenWidth(context) * 0.02,
-            top: GetScreenSize.getScreenWidth(context) * 0.03,
-            child: Image.asset(
-              widget.img,
-              fit: BoxFit.contain,
-            ))
+            right: GetScreenSize.getScreenWidth(context) * 0.045,
+            top: GetScreenSize.getScreenWidth(context) * 0.071,
+            child: Container(
+                height: GetScreenSize.getScreenWidth(context) * 0.38,
+                width: GetScreenSize.getScreenWidth(context) * 0.55,
+                decoration: ShapeDecoration(color: widget.circlecolor.withOpacity(0.65), shape: const CircleBorder()))),
+        Positioned(right: GetScreenSize.getScreenWidth(context) * 0.16, top: GetScreenSize.getScreenWidth(context) * 0.032, child: Image.asset(widget.img, fit: BoxFit.fill))
       ],
     );
   }

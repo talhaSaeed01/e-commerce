@@ -22,4 +22,7 @@ class Appassets {
   static var collectionimage2 = 'assets/images/collection_image_2.png';
   static var collectionimage4 = 'assets/images/collection_image_3.png';
   static var filter = "assets/images/filter.png";
+  static var di_2 = "assets/images/DI_2.png";
+  static var di_3 = "assets/images/DI_3.png";
+  static var di_4 = "assets/images/DI_4.png";
 }

@@ -55,6 +55,7 @@ class _NewpassState extends State<Newpass> {
                               bottomSheetProvider.openBottomSheet(context);
                             },
                             child: CustomTextButton(
+                                bordercolor: Appcolors.white,
                                 hieght: GetScreenSize.getScreenWidth(context) * 0.13,
                                 width: GetScreenSize.getScreenWidth(context) * 0.4,
                                 text: Appstrings.newpassbutton,

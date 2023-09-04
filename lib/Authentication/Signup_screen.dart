@@ -51,6 +51,7 @@ class _SignupState extends State<Signup> {
                               child: CustomTextField(controller: signupcnfrmpasswordController, hinttext: Appstrings.signupcnfrmpasshint, keyboardfoam: TextInputType.visiblePassword)),
                           Center(
                               child: CustomTextButton(
+                                  bordercolor: Appcolors.white,
                                   hieght: GetScreenSize.getScreenWidth(context) * 0.13,
                                   width: GetScreenSize.getScreenWidth(context) * 0.4,
                                   text: Appstrings.signupbutton,

@@ -15,7 +15,7 @@ class BottomSheetContent extends StatelessWidget {
     return SizedBox(
         height: GetScreenSize.getScreenWidth(context) * 0.75,
         child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18),
+            padding: const EdgeInsets.only(top: 32, bottom: 5),
             child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
               Image.asset(Appassets.success),
               Padding(
@@ -28,6 +28,7 @@ class BottomSheetContent extends StatelessWidget {
               GestureDetector(
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Bottomnavbardesgin())),
                 child: CustomTextButton(
+                    bordercolor: Appcolors.white,
                     hieght: GetScreenSize.getScreenWidth(context) * 0.13,
                     width: GetScreenSize.getScreenWidth(context) * 0.8,
                     text: Appstrings.bottomsheetbutton,

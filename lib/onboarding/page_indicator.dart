@@ -41,6 +41,7 @@ class _PageIndicatorExampleState extends State<PageIndicatorExample> {
           child: GestureDetector(
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Signup())),
             child: CustomTextButton(
+              bordercolor: Appcolors.white,
               hieght: GetScreenSize.getScreenWidth(context) * 0.12,
               width: GetScreenSize.getScreenWidth(context) * 0.42,
               text: Appstrings.buttontextShoppingnow,

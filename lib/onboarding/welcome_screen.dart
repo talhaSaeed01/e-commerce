@@ -35,6 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: GestureDetector(
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PageIndicatorExample())),
               child: CustomTextButton(
+                  bordercolor: Appcolors.white,
                   hieght: GetScreenSize.getScreenWidth(context) * 0.15,
                   width: GetScreenSize.getScreenWidth(context) * 0.55,
                   text: Appstrings.btwelcome,

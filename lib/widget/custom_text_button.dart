@@ -10,6 +10,7 @@ class CustomTextButton extends StatefulWidget {
   String text;
   Color textcolor;
   Color buttoncolor;
+  Color bordercolor;
   CustomTextButton({
     super.key,
     required this.hieght,
@@ -17,6 +18,7 @@ class CustomTextButton extends StatefulWidget {
     required this.text,
     required this.textcolor,
     required this.buttoncolor,
+    required this.bordercolor,
   });
 
   @override
@@ -31,7 +33,8 @@ class _CustomTextButtonState extends State<CustomTextButton> {
           width: widget.width,
           height: widget.hieght,
           child: Container(
-              decoration: ShapeDecoration(color: widget.buttoncolor, shape: RoundedRectangleBorder(side: BorderSide(width: 0.59, color: Appcolors.white), borderRadius: BorderRadius.circular(29.50))),
+              decoration:
+                  ShapeDecoration(color: widget.buttoncolor, shape: RoundedRectangleBorder(side: BorderSide(width: 0.59, color: widget.bordercolor), borderRadius: BorderRadius.circular(29.50))),
               child: Center(
                 child: CaustomText(text: widget.text, color: widget.textcolor, size: 12, maxline: 1, fontWeight: FontWeight.w500),
               ))),

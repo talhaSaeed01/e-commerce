@@ -25,4 +25,6 @@ class Appassets {
   static var di_2 = "assets/images/DI_2.png";
   static var di_3 = "assets/images/DI_3.png";
   static var di_4 = "assets/images/DI_4.png";
+  static var shirt = 'assets/images/shirt.png';
+  static var checkoutimage = 'assets/images/Checkoutimage.png';
 }

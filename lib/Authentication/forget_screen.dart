@@ -44,6 +44,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                               child: GestureDetector(
                                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const OtPScreen())),
                                   child: CustomTextButton(
+                                      bordercolor: Appcolors.white,
                                       hieght: GetScreenSize.getScreenWidth(context) * 0.13,
                                       width: GetScreenSize.getScreenWidth(context) * 0.4,
                                       text: Appstrings.FSbutton,

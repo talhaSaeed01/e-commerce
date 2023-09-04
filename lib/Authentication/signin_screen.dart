@@ -51,6 +51,7 @@ class _SigninState extends State<Signin> {
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.06),
                           Center(
                               child: CustomTextButton(
+                                  bordercolor: Appcolors.white,
                                   hieght: GetScreenSize.getScreenWidth(context) * 0.13,
                                   width: GetScreenSize.getScreenWidth(context) * 0.4,
                                   text: Appstrings.signinBTtext,

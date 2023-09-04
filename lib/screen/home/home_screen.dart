@@ -10,6 +10,7 @@ import 'package:ecommerce/utils/get_screen_size.dart';
 import 'package:ecommerce/widget/caustom_heading.dart';
 import 'package:ecommerce/widget/caustom_text.dart';
 import 'package:ecommerce/widget/custom_appbar.dart';
+import 'package:ecommerce/widget/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -80,10 +81,20 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.only(left: GetScreenSize.getScreenWidth(context) * 0.04),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => FeaturedProductDesgin(
-                  img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
-                  name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
-                  price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price),
+              itemBuilder: (context, index) => GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailScreen(
+                              img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
+                              name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
+                              price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price),
+                        )),
+                    child: FeaturedProductDesgin(
+                        img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
+                        name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
+                        price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price),
+                  ),
               separatorBuilder: (context, index) => const SizedBox(width: 20),
               itemCount: Provider.of<Productprovider>(context, listen: true).featuredproductslist.length)),
       Container(

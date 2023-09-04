@@ -1,5 +1,7 @@
 import 'package:ecommerce/onboarding/welcome_screen.dart';
 import 'package:ecommerce/provider/bottom_sheet_provider.dart';
+import 'package:ecommerce/provider/cart_provider.dart';
+import 'package:ecommerce/provider/detail_screen_provider.dart';
 import 'package:ecommerce/provider/drawer_provider.dart';
 import 'package:ecommerce/provider/product_provider.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +27,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<DrawerProvider>(
           create: (_) => DrawerProvider(),
+        ),
+        ChangeNotifierProvider<DetailScreenProvider>(
+          create: (_) => DetailScreenProvider(),
+        ),
+        ChangeNotifierProvider<CartProvider>(
+          create: (_) => CartProvider(),
         ),
       ],
       child: MaterialApp(

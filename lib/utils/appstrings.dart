@@ -111,4 +111,63 @@ class Appstrings {
   static var drawertitle = 'Filter';
   static var drawerprice = 'Price';
   static var drawercolor = 'Color';
+  static var drawercategory = 'Category';
+  static var dc1 = 'Shirts';
+  static var dc2 = 't-shirts';
+  static var dc3 = 'Pants';
+  static var drawerdisccount = "Discount";
+  static var drawerdisccountb1 = "70% off";
+  static var drawerdisccountb2 = "50% off";
+  static var drawerdisccountb3 = "30% off";
+  static var drawerdisccountb4 = "20% off";
+  static var drawerreset = 'Reset';
+  static var drawerapply = 'Apply';
+  //.....................detailscreen.................
+  static var detailsize = 'Detail Size';
+  static var description = 'Description';
+  static var descriptiondetail =
+      'Sportswear is no longer under culture, it is no longer indie or cobbled together as it once was. Sport is fashion today. The top is oversized in fit and style, may need to size down.';
+  static var descriptionreview = 'Review';
+  static var ratingpoint = '4.9';
+  static var ratingpointoutof = "OUT OF 5";
+  static var addtocart = "  Add to cart";
+
+  //.....................Cartscreen.................
+
+  static var CartScreenTitle = "YourCart";
+  static var CartScreensize = "Size: M | Color: White";
+
+  static var CartProductprice = "Product price";
+
+  static var CartShipping = "Shipping";
+
+  static var CartSubtotal = "Subtotal";
+
+  static var CartProductpriceamount = "\$110";
+
+  static var CartShippingamount = "Freeship";
+
+  static var CartSubtotalamount = "\$110";
+  static var Proceedtocheckout = 'Proceed to checkout';
+  //.......................Checkoutscreen.........................
+  static var CheckOutScreentitle = "Check out";
+  static var CheckOutScreenstep1 = "Step 1";
+  static var CheckOutScreenshipping = "Shipping";
+
+  static var CheckOutScreenshippingmethod = "Shipping method";
+  static var CheckOutfirstname = "Firstname";
+  static var CheckOutlastname = "Lastname";
+  static var CheckOutcountry = "Country";
+  static var CheckOutstreetname = "Streetname";
+  static var CheckOutcity = "City";
+  static var CheckOutstate = "State";
+  static var CheckOutzipCode = "ZipCode";
+  static var CheckOutphonenumber = "Phonenumber";
+  static var CheckoutShppingmethodtitle1 = "Free Delivery";
+  static var CheckoutShppingmethodsubtitle1 = "5-7 days delivery";
+  static var CheckoutShppingmethodtitle2 = "Delivery to Home";
+  static var CheckoutShppingmethodsubtitle2 = "2-3 days delivery";
+
+  static var CheckoutShppingmethodtitle3 = "Fast Delivery";
+  static var CheckoutShppingmethodsubtitle3 = "1 day delivery";
 }

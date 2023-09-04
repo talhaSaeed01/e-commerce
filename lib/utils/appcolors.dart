@@ -13,4 +13,8 @@ class Appcolors {
   static var discover3TileColor = Color(0xFF44565C);
   static var discover4TileColor = Color(0xFFB9AEB2);
   static var purpleColor = Color.fromARGB(255, 160, 93, 124);
+  static var heartcolor = Colors.red;
+  static var starcolorblue = const Color.fromARGB(255, 18, 94, 156);
+  static var blue = Colors.blue;
+  static var green = Color.fromARGB(255, 55, 145, 101);
 }

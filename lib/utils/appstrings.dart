@@ -198,4 +198,8 @@ class Appstrings {
 
   static var support = 'Support';
   static var aboutus = 'About Us';
+
+  static var light = 'Light';
+
+  static var dark = 'Dark';
 }

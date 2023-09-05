@@ -26,7 +26,7 @@ class BottomSheetContent extends StatelessWidget {
                   child: CaustomText(text: Appstrings.bottomsheetsubtitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.03, maxline: 1, fontWeight: FontWeight.w400)),
               SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.07),
               GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Bottomnavbardesgin())),
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Bottomnavbardesgin())),
                 child: CustomTextButton(
                     bordercolor: Appcolors.white,
                     hieght: GetScreenSize.getScreenWidth(context) * 0.13,

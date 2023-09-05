@@ -1,5 +1,5 @@
 import 'package:ecommerce/provider/cart_provider.dart';
-import 'package:ecommerce/screen/cart/checkout_screen.dart';
+import 'package:ecommerce/screen/cart/checkout_screen1.dart';
 import 'package:ecommerce/utils/appcolors.dart';
 import 'package:ecommerce/utils/appstrings.dart';
 import 'package:ecommerce/utils/get_screen_size.dart';
@@ -84,7 +84,7 @@ class _CartScreenState extends State<CartScreen> {
                   ])
                 ]))),
         GestureDetector(
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckOutScreen())),
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CheckOutScreen1())),
           child: CustomTextButton(
               bordercolor: Appcolors.discover3TileColor,
               hieght: GetScreenSize.getScreenWidth(context) * 0.13,

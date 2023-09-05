@@ -22,15 +22,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             body: Stack(children: [
       SizedBox(height: double.infinity, width: double.infinity, child: Image.asset(Appassets.welcomebackgroundimage, fit: BoxFit.fitHeight)),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.65,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.45,
           left: GetScreenSize.getScreenWidth(context) * 0.13,
           child: CaustomText(text: Appstrings.welcomeh1, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold)),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.55,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.35,
           left: GetScreenSize.getScreenWidth(context) * 0.19,
           child: CaustomText(text: Appstrings.welcomeh2, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.04, maxline: 1, fontWeight: FontWeight.bold)),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.28,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.1,
           left: GetScreenSize.getScreenWidth(context) * 0.21,
           child: GestureDetector(
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PageIndicatorExample())),

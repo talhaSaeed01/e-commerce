@@ -19,7 +19,11 @@ class _Caustom_appbarState extends State<Caustom_appbar> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(Appassets.group),
+        GestureDetector(
+            onTap: (() {
+              Scaffold.of(context).openDrawer();
+            }),
+            child: Image.asset(Appassets.group)),
         CaustomText(text: widget.title, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold),
         Image.asset(Appassets.bell),
       ],

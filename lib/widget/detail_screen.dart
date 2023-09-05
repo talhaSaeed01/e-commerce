@@ -175,7 +175,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     BoxShadow(color: Appcolors.discover3TileColor, spreadRadius: 1, blurRadius: 1, offset: Offset(0, 2)),
                   ]),
                   width: double.infinity,
-                  height: 65,
+                  height: 50,
                   child: Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.center, children: [
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Icon(Icons.shop, color: Appcolors.white, size: 14),

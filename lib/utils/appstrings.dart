@@ -131,29 +131,20 @@ class Appstrings {
   static var ratingpoint = '4.9';
   static var ratingpointoutof = "OUT OF 5";
   static var addtocart = "  Add to cart";
-
   //.....................Cartscreen.................
-
   static var CartScreenTitle = "YourCart";
   static var CartScreensize = "Size: M | Color: White";
-
   static var CartProductprice = "Product price";
-
   static var CartShipping = "Shipping";
-
   static var CartSubtotal = "Subtotal";
-
   static var CartProductpriceamount = "\$110";
-
   static var CartShippingamount = "Freeship";
-
   static var CartSubtotalamount = "\$110";
   static var Proceedtocheckout = 'Proceed to checkout';
-  //.......................Checkoutscreen.........................
+  //.......................Checkoutscreen1.........................
   static var CheckOutScreentitle = "Check out";
   static var CheckOutScreenstep1 = "Step 1";
   static var CheckOutScreenshipping = "Shipping";
-
   static var CheckOutScreenshippingmethod = "Shipping method";
   static var CheckOutfirstname = "Firstname";
   static var CheckOutlastname = "Lastname";
@@ -167,7 +158,44 @@ class Appstrings {
   static var CheckoutShppingmethodsubtitle1 = "5-7 days delivery";
   static var CheckoutShppingmethodtitle2 = "Delivery to Home";
   static var CheckoutShppingmethodsubtitle2 = "2-3 days delivery";
-
   static var CheckoutShppingmethodtitle3 = "Fast Delivery";
   static var CheckoutShppingmethodsubtitle3 = "1 day delivery";
+  static var CheckOutCouponCodeHint = "Have a code? type it here...";
+  static var CheckOutCouponCode = "Coupon Code";
+  static var CheckOutCouponCodeValidate = "Validate";
+  static var CheckOutBillingaddress = "Billing Address";
+  static var CheckBoxtext = 'Copy address data from shipping';
+  static var CheckOutButton = "Continue to payment";
+
+  //................Checkout Screen 2 ........................
+  static var CheckOutScreen2step2 = "Step 2";
+  static var CheckOutScreen2payement = "Payement";
+  static var CheckOutScreen2Heading1left = "Choose your card";
+  static var CheckOutScreen2Heading1right = "Add new +";
+  static var CheckOutScreen2Cash = "Cash";
+  static var CheckOutScreen2Creditcard = "Credit Card";
+  static var CheckOutScreen2more = "More";
+  static var CheckOutScreen2checkinwith = "Check in with";
+  static var CheckOutScreen2checkboxtext = "I agree Term and Condition";
+  static var CheckOutScreen2button = "Place my order";
+
+  //................Checkout Screen 3 ........................
+  static var CheckOutScreen3ordercomp = "Order Completed";
+  static var CheckOutScreen3ordercomptext = 'Thank you for your purchase.\nYou can view your order in ‘My Orders’ section.';
+  static var CheckOutScreen3Button = 'Continue shopping';
+  //....................Home drawer..........................
+  static var name = "Sunie Pham";
+  static var email = 'sunieux@gmail.com';
+
+  static var home = 'Home';
+
+  static var search = 'Search';
+
+  static var cart = 'Cart';
+
+  static var setting = 'Setting';
+  static var other = 'Other';
+
+  static var support = 'Support';
+  static var aboutus = 'About Us';
 }

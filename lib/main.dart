@@ -1,6 +1,7 @@
 import 'package:ecommerce/onboarding/welcome_screen.dart';
 import 'package:ecommerce/provider/bottom_sheet_provider.dart';
 import 'package:ecommerce/provider/cart_provider.dart';
+import 'package:ecommerce/provider/check_out_provider1.dart';
 import 'package:ecommerce/provider/detail_screen_provider.dart';
 import 'package:ecommerce/provider/drawer_provider.dart';
 import 'package:ecommerce/provider/product_provider.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<CartProvider>(
           create: (_) => CartProvider(),
+        ),
+        ChangeNotifierProvider<CheckoutProvider1>(
+          create: (_) => CheckoutProvider1(),
         ),
       ],
       child: MaterialApp(

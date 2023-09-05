@@ -1,6 +1,7 @@
 import 'package:ecommerce/provider/product_provider.dart';
 import 'package:ecommerce/screen/discover/widget/discover_tile_desgin.dart';
 import 'package:ecommerce/screen/discover/widget/drawer_widget.dart';
+import 'package:ecommerce/screen/home/widget/home_drawer.dart';
 import 'package:ecommerce/utils/appstrings.dart';
 import 'package:ecommerce/utils/get_screen_size.dart';
 import 'package:ecommerce/widget/caustom_search_bar.dart';
@@ -28,6 +29,7 @@ class _DiscoverscreenState extends State<Discoverscreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            drawer: const HomeDrawer(),
             endDrawer: const DrawerWidget(),
             body: SingleChildScrollView(
               child: Column(children: [

@@ -27,4 +27,21 @@ class Appassets {
   static var di_4 = "assets/images/DI_4.png";
   static var shirt = 'assets/images/shirt.png';
   static var checkoutimage = 'assets/images/Checkoutimage.png';
+
+  static var checkoutimagecash = 'assets/images/cash.png';
+
+  static var checkoutimageCreditcard = 'assets/images/Creditcard.png';
+
+  static var checkoutimagemore = 'assets/images/more.png';
+
+  static var checkoutimagecard = 'assets/images/card.png';
+
+  static var checkoutimagecheck2process = 'assets/images/check2process.png';
+
+  static var checkoutimagepaymentmethod = 'assets/images/payments.png';
+  static var checkoutimageprocess3 = 'assets/images/checkoutprocess3.png';
+
+  static var checkoutimageorder = 'assets/images/order.png';
+
+  static var avatar = 'assets/images/avatar.png';
 }

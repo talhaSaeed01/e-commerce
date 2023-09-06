@@ -36,4 +36,10 @@ List<Product> products = [
   Product(Appstrings.discovertitle1, Appstrings.homeFS1, Appcolors.discover1TileColor, Appcolors.discover1TileColor, Appassets.feature2, "popularProducts"),
   Product(Appstrings.discovertitle2, Appstrings.homeFS2, Appcolors.discover2TileColor, Appcolors.discover2TileColor, Appassets.di_2, "popularProducts"),
   Product(Appstrings.discovertitle3, Appstrings.homeFS3, Appcolors.discover3TileColor, Appcolors.discover3TileColor, Appassets.di_3, "popularProducts"),
+  Product(Appstrings.home2imagetexttitle, Appstrings.homeFS3, Appcolors.boxcoloronboarding.withOpacity(0.05), Appcolors.boxcoloronboarding.withOpacity(0.05), Appassets.ob3, "twobanner"),
+  Product(Appstrings.home1imagetext, Appstrings.homeFS1, Appcolors.discover3TileColor, Appcolors.discover3TileColor, Appassets.shutterstock, "firstBanner"),
+  Product(Appstrings.homeTopCollectionH1, Appstrings.homeSR1, Appcolors.grey, Appcolors.grey, Appassets.collectionimage1, 'thirdBanner'),
+  Product(Appstrings.homeTopCollectionH2, Appstrings.homeSR1, Appcolors.grey, Appcolors.grey, Appassets.collectionimage2, 'fourthBanner'),
+  Product(Appstrings.homeTopCollectionH3, Appstrings.homeFS1, Appcolors.grey, Appcolors.grey, Appassets.ob2, 'fifthBanner'),
+  Product(Appstrings.homeTopCollectionH4, Appstrings.homeFS1, Appcolors.grey, Appcolors.grey, Appassets.collectionimage4, 'sixBanner'),
 ];

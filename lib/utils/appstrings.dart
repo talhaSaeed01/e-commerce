@@ -132,6 +132,7 @@ class Appstrings {
   static var ratingpointoutof = "OUT OF 5";
   static var addtocart = "  Add to cart";
   //.....................Cartscreen.................
+  static var nothingadd = "Nothing has been added yet.";
   static var CartScreenTitle = "YourCart";
   static var CartScreensize = "Size: M | Color: White";
   static var CartProductprice = "Product price";
@@ -202,4 +203,12 @@ class Appstrings {
   static var light = 'Light';
 
   static var dark = 'Dark';
+  static var logout = "logout";
+  //........................NotificationScreen............
+  static var notititle1 = 'Good morning! Get 20% Voucher';
+  static var notisubtitle1 = 'Summer sale up to 20% off. Limited voucher. Get now!! 😜';
+  static var notititle2 = 'Special offer just for you';
+  static var notisubtitle2 = 'New Autumn Collection 30% off';
+  static var notititle3 = 'Holiday sale 50%';
+  static var notisubtitle3 = 'Tap here to get 50% voucher.';
 }

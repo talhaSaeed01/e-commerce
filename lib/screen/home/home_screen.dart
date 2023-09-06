@@ -1,3 +1,4 @@
+import 'package:ecommerce/class/product_class.dart';
 import 'package:ecommerce/provider/product_provider.dart';
 import 'package:ecommerce/screen/home/widget/Each_categorey_desgin.dart';
 import 'package:ecommerce/screen/home/widget/featured_productdesgin_screen.dart';
@@ -28,14 +29,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<Productprovider>(context, listen: false).addfeaturedProducts();
-      Provider.of<Productprovider>(context, listen: false).addrecomendedProducts();
+      context.read<Productprovider>().fetchAndSetProductsFromFirestore();
+      context.read<Productprovider>().fetchsecondbannerProduct();
+      context.read<Productprovider>().fetchFirstBannerProduct();
+      context.read<Productprovider>().fetchThirdBannerProduct();
+      context.read<Productprovider>().fetchFourthBannerProduct();
+      context.read<Productprovider>().fetchFifthBannerProduct();
+      context.read<Productprovider>().fetchSixBannerProduct();
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    Product? secondbanner = context.read<Productprovider>().twobannerProduct;
+    Product? firstbanner = context.read<Productprovider>().firstbannerProduct;
+    Product? thirdbanner = context.read<Productprovider>().thirdbannerProduct;
+    Product? fourthbanner = context.read<Productprovider>().fourthbannerProduct;
+    Product? fifthbanner = context.read<Productprovider>().fifthbannerProduct;
+    Product? sixbanner = context.read<Productprovider>().sixbannerProduct;
+
     return SafeArea(
         child: Scaffold(
             drawer: const HomeDrawer(),
@@ -58,13 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   itemBuilder: (context, index) => EachCategoreyDesgin(image: categories[index].imageAsset, text: categories[index].name),
                                   separatorBuilder: (context, index) => SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.09)))),
                     ),
-                    Container(
-                        width: GetScreenSize.getScreenWidth(context) * 0.87,
-                        height: GetScreenSize.getScreenWidth(context) * 0.44,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: DecorationImage(image: AssetImage(Appassets.shutterstock), fit: BoxFit.fill)),
-                        child: Align(
-                            alignment: Alignment.centerRight,
-                            child: CaustomText(text: Appstrings.home1imagetext, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.055, maxline: 3, fontWeight: FontWeight.bold))),
+                    if (firstbanner == null) const CircularProgressIndicator(),
+                    if (firstbanner != null)
+                      Container(
+                          width: GetScreenSize.getScreenWidth(context) * 0.87,
+                          height: GetScreenSize.getScreenWidth(context) * 0.44,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: DecorationImage(image: AssetImage(firstbanner.image), fit: BoxFit.fill)),
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: CaustomText(text: firstbanner.title, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.055, maxline: 3, fontWeight: FontWeight.bold))),
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                         child: CaustomHeading(
@@ -105,14 +120,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                     Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Padding(
-                          padding: EdgeInsets.only(top: GetScreenSize.getScreenWidth(context) * 0.1, bottom: GetScreenSize.getScreenWidth(context) * 0.02),
-                          child: CaustomText(
-                              text: Appstrings.home2imagetexttitle,
-                              color: Appcolors.grey.withOpacity(0.63),
-                              size: GetScreenSize.getScreenWidth(context) * 0.019,
-                              maxline: 1,
-                              fontWeight: FontWeight.bold)),
+                      if (secondbanner != null)
+                        Padding(
+                            padding: EdgeInsets.only(top: GetScreenSize.getScreenWidth(context) * 0.1, bottom: GetScreenSize.getScreenWidth(context) * 0.02),
+                            child: CaustomText(
+                                text: secondbanner.title, color: Appcolors.grey.withOpacity(0.63), size: GetScreenSize.getScreenWidth(context) * 0.019, maxline: 1, fontWeight: FontWeight.bold)),
                       CaustomText(
                           text: Appstrings.home2imagetextsubtitle,
                           color: Appcolors.black.withOpacity(0.44),
@@ -120,7 +132,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           maxline: 2,
                           fontWeight: FontWeight.bold)
                     ]),
-                    Image.asset(Appassets.ob3)
+                    if (secondbanner != null) Image.asset(secondbanner.image),
+                    if (secondbanner == null) const CircularProgressIndicator()
                   ])),
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
@@ -158,45 +171,54 @@ class _HomeScreenState extends State<HomeScreen> {
                       righttextcolor: Appcolors.grey,
                       rightttextsize: GetScreenSize.getScreenWidth(context) * 0.03,
                       righttfontwieght: FontWeight.bold)),
-              verticaltiledesgin(
-                  containerHieght: GetScreenSize.getScreenWidth(context) * 0.40,
-                  containerWidth: GetScreenSize.getScreenWidth(context) * 0.87,
-                  title: Appstrings.homeTopCollectionH1,
-                  subtitle: Appstrings.homeTopCollectionS1,
-                  titlecolor: Appcolors.grey,
-                  subtitlecolor: Appcolors.black.withOpacity(0.75),
-                  img: Appassets.collectionimage1),
-              verticaltiledesgin(
-                  containerHieght: GetScreenSize.getScreenWidth(context) * 0.41,
-                  containerWidth: GetScreenSize.getScreenWidth(context) * 0.87,
-                  title: Appstrings.homeTopCollectionH2,
-                  subtitle: Appstrings.homeTopCollectionS2,
-                  titlecolor: Appcolors.grey,
-                  subtitlecolor: Appcolors.black.withOpacity(0.85),
-                  img: Appassets.collectionimage2),
+              if (thirdbanner == null) const CircularProgressIndicator(),
+              if (thirdbanner != null)
+                verticaltiledesgin(
+                    containerHieght: GetScreenSize.getScreenWidth(context) * 0.40,
+                    containerWidth: GetScreenSize.getScreenWidth(context) * 0.87,
+                    title: thirdbanner.title,
+                    subtitle: Appstrings.homeTopCollectionS1,
+                    titlecolor: thirdbanner.tileColor,
+                    subtitlecolor: Appcolors.black.withOpacity(0.75),
+                    img: thirdbanner.image),
+              if (fourthbanner == null) SizedBox(height: 14),
+              if (fourthbanner == null) const CircularProgressIndicator(),
+              if (fourthbanner != null)
+                verticaltiledesgin(
+                    containerHieght: GetScreenSize.getScreenWidth(context) * 0.41,
+                    containerWidth: GetScreenSize.getScreenWidth(context) * 0.87,
+                    title: fourthbanner.title,
+                    subtitle: Appstrings.homeTopCollectionS2,
+                    titlecolor: fourthbanner.tileColor,
+                    subtitlecolor: Appcolors.black.withOpacity(0.85),
+                    img: fourthbanner.image),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                Container(
-                    width: GetScreenSize.getScreenWidth(context) * 0.40,
-                    height: GetScreenSize.getScreenWidth(context) * 0.54,
-                    decoration: BoxDecoration(color: Appcolors.white, borderRadius: BorderRadius.circular(15)),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                      SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.23, child: Image.asset(Appassets.ob2, fit: BoxFit.fill)),
-                      Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
-                        CaustomText(text: Appstrings.homeTopCollectionH3, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
-                        CaustomText(text: Appstrings.homeTopCollectionS3, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)
-                      ])
-                    ])),
-                Container(
-                    width: GetScreenSize.getScreenWidth(context) * 0.40,
-                    height: GetScreenSize.getScreenWidth(context) * 0.54,
-                    decoration: BoxDecoration(color: Appcolors.white, borderRadius: BorderRadius.circular(15)),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                      Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        CaustomText(text: Appstrings.homeTopCollectionH4, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
-                        CaustomText(text: Appstrings.homeTopCollectionS4, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)
-                      ]),
-                      SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.2, child: Image.asset(Appassets.collectionimage4, fit: BoxFit.fill)),
-                    ]))
+                if (fifthbanner == null) const CircularProgressIndicator(),
+                if (fifthbanner != null)
+                  Container(
+                      width: GetScreenSize.getScreenWidth(context) * 0.40,
+                      height: GetScreenSize.getScreenWidth(context) * 0.54,
+                      decoration: BoxDecoration(color: Appcolors.white, borderRadius: BorderRadius.circular(15)),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                        SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.23, child: Image.asset(fifthbanner.image, fit: BoxFit.fill)),
+                        Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
+                          CaustomText(text: fifthbanner.title, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
+                          CaustomText(text: Appstrings.homeTopCollectionS3, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)
+                        ])
+                      ])),
+                if (sixbanner == null) const CircularProgressIndicator(),
+                if (sixbanner != null)
+                  Container(
+                      width: GetScreenSize.getScreenWidth(context) * 0.40,
+                      height: GetScreenSize.getScreenWidth(context) * 0.54,
+                      decoration: BoxDecoration(color: Appcolors.white, borderRadius: BorderRadius.circular(15)),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                        Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          CaustomText(text: sixbanner.title, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
+                          CaustomText(text: Appstrings.homeTopCollectionS4, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)
+                        ]),
+                        SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.2, child: Image.asset(sixbanner.image, fit: BoxFit.fill)),
+                      ]))
               ])
             ]))));
   }

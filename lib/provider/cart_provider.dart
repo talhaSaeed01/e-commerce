@@ -12,6 +12,21 @@ class CartProvider extends ChangeNotifier {
     cartItems.removeAt(index);
     notifyListeners();
   }
+
+  double getTotalPrice() {
+    double totalPrice = 0.0;
+    for (CartItem cartItem in cartItems) {
+      double price = double.parse(cartItem.price.split("\$")[1]);
+      totalPrice += price;
+    }
+    return totalPrice;
+  }
+
+  double calculateSubtotal() {
+    double total = getTotalPrice();
+    double subtotal = total + 30.0;
+    return subtotal;
+  }
 }
 
 class CartItem {

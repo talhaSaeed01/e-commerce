@@ -20,7 +20,7 @@ class Discoverscreen extends StatefulWidget {
 class _DiscoverscreenState extends State<Discoverscreen> {
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<Productprovider>(context, listen: false).adddiscoverProducts();
+      context.read<Productprovider>().fetchAndSetProductsFromFirestore();
     });
     super.initState();
   }

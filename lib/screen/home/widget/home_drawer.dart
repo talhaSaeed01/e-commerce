@@ -1,4 +1,3 @@
-import 'package:ecommerce/screen/bottonavbar_screen.dart';
 import 'package:ecommerce/screen/cart/cart_screen.dart';
 import 'package:ecommerce/screen/discover/search_screen.dart';
 import 'package:ecommerce/screen/setting/setting_screen.dart';
@@ -45,31 +44,31 @@ class _HomeDrawerState extends State<HomeDrawer> {
                           },
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
-                              children: [Icon(Icons.home, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.home, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17))]),
+                              children: [Icon(Icons.home, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.home, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))]),
                         ),
                         const Divider(),
                         GestureDetector(
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen())),
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen())),
                             child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                               Icon(Icons.search, color: Appcolors.grey),
                               const SizedBox(width: 7),
-                              Text(Appstrings.search, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17))
+                              Text(Appstrings.search, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))
                             ])),
                         const Divider(),
                         GestureDetector(
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen())),
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen())),
                             child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                               Icon(Icons.shopping_bag, color: Appcolors.grey),
                               const SizedBox(width: 7),
-                              Text(Appstrings.cart, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17))
+                              Text(Appstrings.cart, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))
                             ])),
                         const Divider(),
                         GestureDetector(
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SettingScreen())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingScreen())),
                           child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                             Icon(Icons.person, color: Appcolors.grey),
                             const SizedBox(width: 7),
-                            Text(Appstrings.setting, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17))
+                            Text(Appstrings.setting, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))
                           ]),
                         ),
                       ]))),
@@ -79,46 +78,41 @@ class _HomeDrawerState extends State<HomeDrawer> {
                 child: CaustomText(text: Appstrings.other, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.04, maxline: 1, fontWeight: FontWeight.w400),
               ),
               SizedBox(
-                height: GetScreenSize.getScreenWidth(context) * 0.3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [Icon(Icons.support, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.support, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17))]),
-                    const Divider(),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [Icon(Icons.help, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.aboutus, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17))]),
-                    const Divider(),
-                  ],
-                ),
-              ),
+                  height: GetScreenSize.getScreenWidth(context) * 0.3,
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                          Icon(Icons.support, color: Appcolors.grey),
+                          const SizedBox(width: 7),
+                          Text(Appstrings.support, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))
+                        ]),
+                        const Divider(),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [Icon(Icons.help, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.aboutus, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))]),
+                        const Divider()
+                      ]))),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: SizedBox(
-                  width: GetScreenSize.getScreenWidth(context) * 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      CustomTextButton(
-                          bordercolor: Appcolors.black,
-                          hieght: GetScreenSize.getScreenWidth(context) * 0.1,
-                          width: GetScreenSize.getScreenWidth(context) * 0.25,
-                          text: Appstrings.light,
-                          textcolor: Appcolors.white,
-                          buttoncolor: Appcolors.browncolorbutton.withOpacity(0.75)),
-                      CustomTextButton(
-                          bordercolor: Appcolors.black,
-                          hieght: GetScreenSize.getScreenWidth(context) * 0.1,
-                          width: GetScreenSize.getScreenWidth(context) * 0.25,
-                          text: Appstrings.dark,
-                          textcolor: Appcolors.white,
-                          buttoncolor: Appcolors.browncolorbutton.withOpacity(0.75)),
-                    ],
-                  ),
-                ),
-              )
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: SizedBox(
+                      width: GetScreenSize.getScreenWidth(context) * 1,
+                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+                        CustomTextButton(
+                            bordercolor: Appcolors.black,
+                            hieght: GetScreenSize.getScreenWidth(context) * 0.1,
+                            width: GetScreenSize.getScreenWidth(context) * 0.25,
+                            text: Appstrings.light,
+                            textcolor: Appcolors.white,
+                            buttoncolor: Appcolors.browncolorbutton.withOpacity(0.75)),
+                        CustomTextButton(
+                            bordercolor: Appcolors.black,
+                            hieght: GetScreenSize.getScreenWidth(context) * 0.1,
+                            width: GetScreenSize.getScreenWidth(context) * 0.25,
+                            text: Appstrings.dark,
+                            textcolor: Appcolors.white,
+                            buttoncolor: Appcolors.browncolorbutton.withOpacity(0.75))
+                      ])))
             ])));
   }
 }

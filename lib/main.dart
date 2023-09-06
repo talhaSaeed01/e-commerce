@@ -1,3 +1,8 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:ecommerce/class/product_class.dart';
+import 'package:ecommerce/firebase/firebase_manager.dart';
+import 'package:ecommerce/firebase_options.dart';
 import 'package:ecommerce/onboarding/welcome_screen.dart';
 import 'package:ecommerce/provider/bottom_sheet_provider.dart';
 import 'package:ecommerce/provider/cart_provider.dart';
@@ -5,11 +10,19 @@ import 'package:ecommerce/provider/check_out_provider1.dart';
 import 'package:ecommerce/provider/detail_screen_provider.dart';
 import 'package:ecommerce/provider/drawer_provider.dart';
 import 'package:ecommerce/provider/product_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // await uploadDataToFirestore(products);
+  List<Product> retrievedProducts = await fetchProductsFromFirestore();
+
   runApp(const MyApp());
 }
 

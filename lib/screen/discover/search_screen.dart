@@ -21,7 +21,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
-    Provider.of<Productprovider>(context, listen: false).addpopularProducts();
+    context.read<Productprovider>().fetchAndSetProductsFromFirestore();
     super.initState();
   }
 

@@ -9,6 +9,7 @@ class CheckoutProvider1 extends ChangeNotifier {
     notifyListeners();
   }
 
+//.................................checkbox....................
   void toggleCheckbox(bool newValue) {
     isCheckboxChecked = newValue;
     notifyListeners();

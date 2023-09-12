@@ -1,11 +1,14 @@
+// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/class/product_class.dart';
+import 'package:ecommerce/provider/current_user_provider.dart';
 import 'package:ecommerce/provider/product_provider.dart';
 import 'package:ecommerce/screen/home/widget/Each_categorey_desgin.dart';
 import 'package:ecommerce/screen/home/widget/featured_productdesgin_screen.dart';
 import 'package:ecommerce/screen/home/widget/home_drawer.dart';
 import 'package:ecommerce/screen/home/widget/rcmnd_product.dart';
 import 'package:ecommerce/screen/home/widget/vertical_tile_desgin.dart';
-import 'package:ecommerce/utils/appassets.dart';
 import 'package:ecommerce/utils/appcolors.dart';
 import 'package:ecommerce/utils/appstrings.dart';
 import 'package:ecommerce/utils/get_screen_size.dart';
@@ -19,7 +22,8 @@ import 'package:provider/provider.dart';
 import '../../class/categorey_class.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  var currentid;
+  HomeScreen({super.key, this.currentid});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -36,7 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
       context.read<Productprovider>().fetchFourthBannerProduct();
       context.read<Productprovider>().fetchFifthBannerProduct();
       context.read<Productprovider>().fetchSixBannerProduct();
+      final currentuserProvider = Provider.of<UserProvider>(context, listen: false);
+      currentuserProvider.setCurrentUserId();
     });
+
     super.initState();
   }
 
@@ -48,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Product? fourthbanner = context.read<Productprovider>().fourthbannerProduct;
     Product? fifthbanner = context.read<Productprovider>().fifthbannerProduct;
     Product? sixbanner = context.read<Productprovider>().sixbannerProduct;
-
+    final currentuserProvider = Provider.of<UserProvider>(context);
     return SafeArea(
         child: Scaffold(
             drawer: const HomeDrawer(),
@@ -57,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 13),
                   child: Column(children: [
-                    Caustom_appbar(title: Appstrings.homescreentitle),
+                    Caustom_appbar(title: Appstrings.homescreentitle, id: currentuserProvider.currentUserId),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: GetScreenSize.getScreenWidth(context) * 0.06),
                       child: SizedBox(
@@ -68,7 +75,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
                                   itemCount: categories.length,
-                                  itemBuilder: (context, index) => EachCategoreyDesgin(image: categories[index].imageAsset, text: categories[index].name),
+                                  itemBuilder: (context, index) => EachCategoreyDesgin(
+                                        image: categories[index].imageAsset,
+                                        text: categories[index].name,
+                                        id: widget.currentid,
+                                      ),
                                   separatorBuilder: (context, index) => SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.09)))),
                     ),
                     if (firstbanner == null) const CircularProgressIndicator(),
@@ -76,7 +87,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                           width: GetScreenSize.getScreenWidth(context) * 0.87,
                           height: GetScreenSize.getScreenWidth(context) * 0.44,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), image: DecorationImage(image: AssetImage(firstbanner.image), fit: BoxFit.fill)),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(image: CachedNetworkImageProvider(firstbanner.image), fit: BoxFit.fill),
+                          ),
                           child: Align(
                               alignment: Alignment.centerRight,
                               child: CaustomText(text: firstbanner.title, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.055, maxline: 3, fontWeight: FontWeight.bold))),
@@ -132,7 +146,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           maxline: 2,
                           fontWeight: FontWeight.bold)
                     ]),
-                    if (secondbanner != null) Image.asset(secondbanner.image),
+                    if (secondbanner != null)
+                      CachedNetworkImage(imageUrl: secondbanner.image, placeholder: (context, url) => const CircularProgressIndicator(), errorWidget: (context, url, error) => const Icon(Icons.error)),
                     if (secondbanner == null) const CircularProgressIndicator()
                   ])),
               Padding(
@@ -147,19 +162,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       rightttextsize: GetScreenSize.getScreenWidth(context) * 0.03,
                       righttfontwieght: FontWeight.bold)),
               SizedBox(
-                height: GetScreenSize.getScreenWidth(context) * 0.3,
-                width: double.infinity,
-                child: ListView.separated(
-                    padding: EdgeInsets.only(left: GetScreenSize.getScreenWidth(context) * 0.04),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) => RcmndProductScreen(
-                        img: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].image,
-                        title: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].title,
-                        price: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].price),
-                    separatorBuilder: (context, index) => const SizedBox(width: 3),
-                    itemCount: Provider.of<Productprovider>(context, listen: true).recomendedproductslist.length),
-              ),
+                  height: GetScreenSize.getScreenWidth(context) * 0.3,
+                  width: double.infinity,
+                  child: ListView.separated(
+                      padding: EdgeInsets.only(left: GetScreenSize.getScreenWidth(context) * 0.04),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => RcmndProductScreen(
+                          img: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].image,
+                          title: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].title,
+                          price: Provider.of<Productprovider>(context, listen: true).recomendedproductslist[index].price),
+                      separatorBuilder: (context, index) => const SizedBox(width: 3),
+                      itemCount: Provider.of<Productprovider>(context, listen: true).recomendedproductslist.length)),
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
                   child: CaustomHeading(
@@ -181,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     titlecolor: thirdbanner.tileColor,
                     subtitlecolor: Appcolors.black.withOpacity(0.75),
                     img: thirdbanner.image),
-              if (fourthbanner == null) SizedBox(height: 14),
+              if (fourthbanner == null) const SizedBox(height: 14),
               if (fourthbanner == null) const CircularProgressIndicator(),
               if (fourthbanner != null)
                 verticaltiledesgin(
@@ -200,7 +214,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: GetScreenSize.getScreenWidth(context) * 0.54,
                       decoration: BoxDecoration(color: Appcolors.white, borderRadius: BorderRadius.circular(15)),
                       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                        SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.23, child: Image.asset(fifthbanner.image, fit: BoxFit.fill)),
+                        SizedBox(
+                            height: double.infinity,
+                            width: GetScreenSize.getScreenWidth(context) * 0.23,
+                            child: CachedNetworkImage(
+                                imageUrl: fifthbanner.image,
+                                placeholder: (context, url) => const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                                fit: BoxFit.fill)),
                         Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: [
                           CaustomText(text: fifthbanner.title, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
                           CaustomText(text: Appstrings.homeTopCollectionS3, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)
@@ -217,7 +238,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           CaustomText(text: sixbanner.title, color: Appcolors.grey, size: 12, maxline: 1, fontWeight: FontWeight.w400),
                           CaustomText(text: Appstrings.homeTopCollectionS4, color: Appcolors.black.withOpacity(0.75), size: 19, maxline: 2, fontWeight: FontWeight.bold)
                         ]),
-                        SizedBox(height: double.infinity, width: GetScreenSize.getScreenWidth(context) * 0.2, child: Image.asset(sixbanner.image, fit: BoxFit.fill)),
+                        SizedBox(
+                            height: double.infinity,
+                            width: GetScreenSize.getScreenWidth(context) * 0.2,
+                            child: CachedNetworkImage(
+                                imageUrl: sixbanner.image,
+                                placeholder: (context, url) => const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                                fit: BoxFit.fill))
                       ]))
               ])
             ]))));

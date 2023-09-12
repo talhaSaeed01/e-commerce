@@ -12,5 +12,5 @@ List<DrawerColor> drawerColors = [
   DrawerColor(name: "Green", color: Colors.green),
   DrawerColor(name: "Blue", color: Colors.blue),
   DrawerColor(name: "Purple", color: Colors.purple),
-  DrawerColor(name: "Orange", color: Colors.orange),
+  DrawerColor(name: "Orange", color: Colors.orange)
 ];

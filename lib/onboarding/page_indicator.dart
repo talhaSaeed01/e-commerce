@@ -30,25 +30,19 @@ class _PageIndicatorExampleState extends State<PageIndicatorExample> {
       Container(
           alignment: const Alignment(0, 0.65),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            SmoothPageIndicator(
-              controller: _controller,
-              count: 3,
-              effect: WormEffect(dotWidth: 10, dotHeight: 10, dotColor: Appcolors.caustomOCimage, activeDotColor: Appcolors.white),
-            )
+            SmoothPageIndicator(controller: _controller, count: 3, effect: WormEffect(dotWidth: 10, dotHeight: 10, dotColor: Appcolors.caustomOCimage, activeDotColor: Appcolors.white))
           ])),
       Container(
           alignment: const Alignment(0, 0.85),
           child: GestureDetector(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Signup())),
-            child: CustomTextButton(
-              bordercolor: Appcolors.white,
-              hieght: GetScreenSize.getScreenWidth(context) * 0.12,
-              width: GetScreenSize.getScreenWidth(context) * 0.42,
-              text: Appstrings.buttontextShoppingnow,
-              textcolor: Appcolors.white,
-              buttoncolor: Appcolors.white.withOpacity(0.25),
-            ),
-          ))
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Signup())),
+              child: CustomTextButton(
+                  bordercolor: Appcolors.white,
+                  hieght: GetScreenSize.getScreenWidth(context) * 0.12,
+                  width: GetScreenSize.getScreenWidth(context) * 0.42,
+                  text: Appstrings.buttontextShoppingnow,
+                  textcolor: Appcolors.white,
+                  buttoncolor: Appcolors.white.withOpacity(0.25))))
     ]));
   }
 }

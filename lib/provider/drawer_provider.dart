@@ -4,7 +4,6 @@ class DrawerProvider with ChangeNotifier {
   int _startValue = 15;
   int _endValue = 80;
   String selectedCountry = "United Kingdom";
-
   int get startValue => _startValue;
   int get endValue => _endValue;
 

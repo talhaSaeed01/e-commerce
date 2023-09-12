@@ -35,9 +35,8 @@ class _NewpassState extends State<Newpass> {
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           GestureDetector(onTap: () => Navigator.pop(context), child: const CustomArrowback()),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: CaustomText(text: Appstrings.newpasstitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold),
-                          ),
+                              padding: const EdgeInsets.symmetric(vertical: 20),
+                              child: CaustomText(text: Appstrings.newpasstitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold)),
                           Opacity(
                               opacity: Appstrings.opacityforlightblacktext,
                               child:
@@ -51,17 +50,16 @@ class _NewpassState extends State<Newpass> {
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.06),
                           Center(
                               child: GestureDetector(
-                            onTap: () {
-                              bottomSheetProvider.openBottomSheet(context);
-                            },
-                            child: CustomTextButton(
-                                bordercolor: Appcolors.white,
-                                hieght: GetScreenSize.getScreenWidth(context) * 0.13,
-                                width: GetScreenSize.getScreenWidth(context) * 0.4,
-                                text: Appstrings.newpassbutton,
-                                textcolor: Appcolors.white,
-                                buttoncolor: Appcolors.browncolorbutton),
-                          ))
+                                  onTap: () {
+                                    bottomSheetProvider.openBottomSheet(context);
+                                  },
+                                  child: CustomTextButton(
+                                      bordercolor: Appcolors.white,
+                                      hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+                                      width: GetScreenSize.getScreenWidth(context) * 0.4,
+                                      text: Appstrings.newpassbutton,
+                                      textcolor: Appcolors.white,
+                                      buttoncolor: Appcolors.browncolorbutton)))
                         ]))))));
   }
 }

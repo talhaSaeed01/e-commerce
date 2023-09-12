@@ -15,5 +15,5 @@ List<Category> categories = [
   Category(name: Appstrings.homeCT1, imageAsset: Appassets.icon1),
   Category(name: Appstrings.homeCT2, imageAsset: Appassets.icon2),
   Category(name: Appstrings.homeCT3, imageAsset: Appassets.icon3),
-  Category(name: Appstrings.homeCT4, imageAsset: Appassets.icon4),
+  Category(name: Appstrings.homeCT4, imageAsset: Appassets.icon4)
 ];

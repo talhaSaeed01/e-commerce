@@ -23,10 +23,34 @@ class _FeaturedProductDesginState extends State<FeaturedProductDesgin> {
         child: Padding(
             padding: const EdgeInsets.only(left: 3),
             child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Container(
-                  height: GetScreenSize.getScreenWidth(context) * 0.49,
-                  width: double.infinity,
-                  decoration: BoxDecoration(color: Appcolors.grey.withOpacity(0.46), borderRadius: BorderRadius.circular(15), image: DecorationImage(image: AssetImage(widget.img), fit: BoxFit.fill))),
+              FutureBuilder(
+                  future: precacheImage(NetworkImage(widget.img), context),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container(
+                          height: GetScreenSize.getScreenWidth(context) * 0.49,
+                          width: double.infinity,
+                          decoration: BoxDecoration(color: Appcolors.grey.withOpacity(0.46), borderRadius: BorderRadius.circular(15)),
+                          child: const Center(child: CircularProgressIndicator()));
+                    } else if (snapshot.hasError) {
+                      return Container(
+                          height: GetScreenSize.getScreenWidth(context) * 0.49,
+                          width: double.infinity,
+                          decoration: BoxDecoration(color: Appcolors.grey.withOpacity(0.46), borderRadius: BorderRadius.circular(15)),
+                          child: const Center(child: Icon(Icons.error)));
+                    } else {
+                      return Container(
+                          height: GetScreenSize.getScreenWidth(context) * 0.49,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Appcolors.grey.withOpacity(0.46), borderRadius: BorderRadius.circular(15), image: DecorationImage(image: NetworkImage(widget.img), fit: BoxFit.fill)));
+                    }
+                  }),
+              // Container(
+              //     height: GetScreenSize.getScreenWidth(context) * 0.49,
+              //     width: double.infinity,
+              //     decoration:
+              //         BoxDecoration(color: Appcolors.grey.withOpacity(0.46), borderRadius: BorderRadius.circular(15), image: DecorationImage(image: NetworkImage(widget.img), fit: BoxFit.fill))),
               const SizedBox(height: 3),
               CaustomText(text: widget.name, color: Appcolors.black, size: 12, maxline: 1, fontWeight: FontWeight.bold),
               CaustomText(text: widget.price, color: Appcolors.black, size: 17, maxline: 1, fontWeight: FontWeight.bold)

@@ -27,40 +27,24 @@ class _CaustomSearchbarState extends State<CaustomSearchbar> {
             const Icon(Icons.search),
             const SizedBox(width: 10),
             Expanded(
-              child: widget.isTextFieldEnabled
-                  ? TextField(
-                      decoration: InputDecoration(border: InputBorder.none, hintText: Appstrings.discoverappbarhint),
-                    )
-                  : GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SearchScreen(),
-                            ));
-                      },
-                      child: Text(
-                        Appstrings.discoverappbarhint,
-                        style: TextStyle(
-                          fontSize: 20,
-                          height: 2,
-                          color: Appcolors.grey.withOpacity(0.6),
-                        ),
-                      ),
-                    ),
-            )
+                child: widget.isTextFieldEnabled
+                    ? TextField(decoration: InputDecoration(border: InputBorder.none, hintText: Appstrings.discoverappbarhint))
+                    : GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen()));
+                        },
+                        child: Text(Appstrings.discoverappbarhint, style: TextStyle(fontSize: 20, height: 2, color: Appcolors.grey.withOpacity(0.6)))))
           ])),
       InkWell(
-        onTap: (() {
-          Scaffold.of(context).openEndDrawer();
-        }),
-        child: Container(
-            width: GetScreenSize.getScreenWidth(context) * 0.15,
-            height: 49,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
-            decoration: ShapeDecoration(
-                color: Appcolors.grey.withOpacity(0.13), image: DecorationImage(image: AssetImage(Appassets.filter)), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))),
-      )
+          onTap: (() {
+            Scaffold.of(context).openEndDrawer();
+          }),
+          child: Container(
+              width: GetScreenSize.getScreenWidth(context) * 0.15,
+              height: 49,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+              decoration: ShapeDecoration(
+                  color: Appcolors.grey.withOpacity(0.13), image: DecorationImage(image: AssetImage(Appassets.filter)), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)))))
     ]);
   }
 }

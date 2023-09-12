@@ -26,29 +26,19 @@ class _OtpInputFieldState extends State<OtpInputField> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        4,
-        (index) => Container(
-          width: 50.0,
-          height: 50.0,
-          margin: const EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.black),
-          ),
-          child: TextField(
-            textAlign: TextAlign.center,
-            keyboardType: TextInputType.number,
-            maxLength: 1,
-            onChanged: (value) => _onTextChanged(index, value),
-            decoration: const InputDecoration(
-              counterText: '',
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ),
-    );
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+            4,
+            (index) => Container(
+                width: 50.0,
+                height: 50.0,
+                margin: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.black)),
+                child: TextField(
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
+                    maxLength: 1,
+                    onChanged: (value) => _onTextChanged(index, value),
+                    decoration: const InputDecoration(counterText: '', border: InputBorder.none)))));
   }
 }

@@ -1,4 +1,5 @@
 // ignore_for_file: must_be_immutable
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/class/drawer_color.dart';
 import 'package:ecommerce/class/size_class.dart';
 import 'package:ecommerce/provider/cart_provider.dart';
@@ -36,13 +37,15 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: double.infinity,
                     height: GetScreenSize.getScreenWidth(context) * 0.7,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 68, bottom: 10, left: 22),
-                      child: Container(height: GetScreenSize.getScreenWidth(context) * 0.12, decoration: ShapeDecoration(color: Appcolors.grey.withOpacity(0.15), shape: const CircleBorder())),
-                    )),
+                        padding: const EdgeInsets.only(top: 68, bottom: 10, left: 22),
+                        child: Container(height: GetScreenSize.getScreenWidth(context) * 0.12, decoration: ShapeDecoration(color: Appcolors.grey.withOpacity(0.15), shape: const CircleBorder())))),
                 Positioned(
                     left: 95,
                     top: GetScreenSize.getScreenWidth(context) * 0.02,
-                    child: SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.7, child: Image.asset(widget.img, fit: BoxFit.fill))),
+                    child: SizedBox(
+                        height: GetScreenSize.getScreenWidth(context) * 0.7,
+                        child: CachedNetworkImage(
+                            imageUrl: widget.img, placeholder: (context, url) => const CircularProgressIndicator(), errorWidget: (context, url, error) => const Icon(Icons.error), fit: BoxFit.fill))),
                 Positioned(
                     child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -56,9 +59,10 @@ class _DetailScreenState extends State<DetailScreen> {
                         ])))
               ]),
               Container(
-                  decoration: BoxDecoration(color: Appcolors.white, borderRadius: const BorderRadius.only(topRight: Radius.circular(15.0), topLeft: Radius.circular(15.0)), boxShadow: [
-                    BoxShadow(color: Colors.black.withOpacity(0.3), spreadRadius: 2, blurRadius: 4, offset: Offset(0, 2)),
-                  ]),
+                  decoration: BoxDecoration(
+                      color: Appcolors.white,
+                      borderRadius: const BorderRadius.only(topRight: Radius.circular(15.0), topLeft: Radius.circular(15.0)),
+                      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), spreadRadius: 2, blurRadius: 4, offset: const Offset(0, 2))]),
                   child: Padding(
                       padding: const EdgeInsets.only(top: 8, left: 14, right: 14),
                       child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -67,18 +71,16 @@ class _DetailScreenState extends State<DetailScreen> {
                           CaustomText(text: widget.price, color: Appcolors.black, size: 24, maxline: 1, fontWeight: FontWeight.bold)
                         ]),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 7),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: List.generate(5, (index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    detailProvider.setRating(index + 1);
-                                  },
-                                  child: Icon(Icons.star, color: Provider.of<DetailScreenProvider>(context).rating >= index + 1 ? Appcolors.starcolorblue : Appcolors.grey),
-                                );
-                              })),
-                        ),
+                            padding: const EdgeInsets.symmetric(vertical: 7),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: List.generate(5, (index) {
+                                  return GestureDetector(
+                                      onTap: () {
+                                        detailProvider.setRating(index + 1);
+                                      },
+                                      child: Icon(Icons.star, color: Provider.of<DetailScreenProvider>(context).rating >= index + 1 ? Appcolors.starcolorblue : Appcolors.grey));
+                                }))),
                         const Divider(),
                         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                           SizedBox(
@@ -112,15 +114,15 @@ class _DetailScreenState extends State<DetailScreen> {
                                                 backgroundColor: Appcolors.grey.withOpacity(0.1),
                                                 child: Padding(padding: const EdgeInsets.only(left: 0), child: Text(sizeList[index].name, style: TextStyle(color: Appcolors.black))))),
                                         separatorBuilder: (context, index) => const SizedBox(width: 6),
-                                        itemCount: sizeList.length)),
-                              ])),
+                                        itemCount: sizeList.length))
+                              ]))
                         ]),
                         const Divider(),
                         CaustomText(text: Appstrings.description, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: CaustomText(text: Appstrings.descriptiondetail, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.032, maxline: 4, fontWeight: FontWeight.w300),
-                        ),
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child:
+                                CaustomText(text: Appstrings.descriptiondetail, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.032, maxline: 4, fontWeight: FontWeight.w300)),
                         const Divider(),
                         CaustomText(text: Appstrings.descriptionreview, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold),
                         const Divider(),
@@ -129,17 +131,16 @@ class _DetailScreenState extends State<DetailScreen> {
                               child: Row(children: [
                             CaustomText(text: Appstrings.ratingpoint, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.09, maxline: 1, fontWeight: FontWeight.bold),
                             const SizedBox(width: 7),
-                            CaustomText(text: Appstrings.ratingpointoutof, color: Appcolors.grey, size: GetScreenSize.getScreenWidth(context) * 0.03, maxline: 1, fontWeight: FontWeight.bold),
+                            CaustomText(text: Appstrings.ratingpointoutof, color: Appcolors.grey, size: GetScreenSize.getScreenWidth(context) * 0.03, maxline: 1, fontWeight: FontWeight.bold)
                           ])),
                           Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: List.generate(5, (index) {
                                 return GestureDetector(
-                                  onTap: () {
-                                    detailProvider.setRating(index + 1);
-                                  },
-                                  child: Icon(Icons.star, color: Provider.of<DetailScreenProvider>(context).rating >= index + 1 ? Appcolors.starcolorblue : Appcolors.grey),
-                                );
+                                    onTap: () {
+                                      detailProvider.setRating(index + 1);
+                                    },
+                                    child: Icon(Icons.star, color: Provider.of<DetailScreenProvider>(context).rating >= index + 1 ? Appcolors.starcolorblue : Appcolors.grey));
                               }))
                         ]),
                         ListView.separated(
@@ -159,31 +160,29 @@ class _DetailScreenState extends State<DetailScreen> {
                                 Text('$roundedProgress%', style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold))
                               ]);
                             }),
-                        Container(
-                          height: 34,
-                        )
+                        Container(height: 34)
                       ])))
             ])),
             bottomNavigationBar: GestureDetector(
-              onTap: () {
-                CartItem cartItem = CartItem(img: widget.img, name: widget.name, price: widget.price);
-                cartProvider.addItem(cartItem);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen()));
-              },
-              child: Container(
-                  decoration: BoxDecoration(color: Appcolors.boxcoloronboarding, borderRadius: const BorderRadius.only(topRight: Radius.circular(15.0), topLeft: Radius.circular(15.0)), boxShadow: [
-                    BoxShadow(color: Appcolors.discover3TileColor, spreadRadius: 1, blurRadius: 1, offset: Offset(0, 2)),
-                  ]),
-                  width: double.infinity,
-                  height: 50,
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Icon(Icons.shop, color: Appcolors.white, size: 14),
-                      CaustomText(text: Appstrings.addtocart, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.035, maxline: 1, fontWeight: FontWeight.bold),
-                    ]),
-                    const SizedBox(height: 8),
-                    Divider(indent: 130, endIndent: 130, height: 5, thickness: 3, color: Appcolors.grey)
-                  ])),
-            )));
+                onTap: () {
+                  CartItem cartItem = CartItem(img: widget.img, name: widget.name, price: widget.price);
+                  cartProvider.addItem(cartItem);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: Appcolors.boxcoloronboarding,
+                        borderRadius: const BorderRadius.only(topRight: Radius.circular(15.0), topLeft: Radius.circular(15.0)),
+                        boxShadow: [BoxShadow(color: Appcolors.discover3TileColor, spreadRadius: 1, blurRadius: 1, offset: const Offset(0, 2))]),
+                    width: double.infinity,
+                    height: 60,
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        Icon(Icons.shop, color: Appcolors.white, size: 14),
+                        CaustomText(text: Appstrings.addtocart, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.035, maxline: 1, fontWeight: FontWeight.bold)
+                      ]),
+                      const SizedBox(height: 8),
+                      Divider(indent: 130, endIndent: 130, height: 5, thickness: 3, color: Appcolors.grey)
+                    ])))));
   }
 }

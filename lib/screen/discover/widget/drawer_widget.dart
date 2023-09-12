@@ -18,6 +18,7 @@ class DrawerWidget extends StatefulWidget {
 }
 
 class _DrawerWidgetState extends State<DrawerWidget> {
+  @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<DrawerProvider>(context, listen: false);

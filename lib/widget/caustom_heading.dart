@@ -30,12 +30,9 @@ class CaustomHeading extends StatefulWidget {
 class _CaustomHeadingState extends State<CaustomHeading> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CaustomText(text: widget.lefttext, color: widget.lefttextcolor, size: widget.lefttextsize, maxline: 1, fontWeight: widget.leftfontwieght),
-        CaustomText(text: widget.righttext, color: widget.righttextcolor, size: widget.rightttextsize, maxline: 1, fontWeight: widget.righttfontwieght),
-      ],
-    );
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      CaustomText(text: widget.lefttext, color: widget.lefttextcolor, size: widget.lefttextsize, maxline: 1, fontWeight: widget.leftfontwieght),
+      CaustomText(text: widget.righttext, color: widget.righttextcolor, size: widget.rightttextsize, maxline: 1, fontWeight: widget.righttfontwieght)
+    ]);
   }
 }

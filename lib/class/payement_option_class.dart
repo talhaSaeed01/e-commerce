@@ -11,5 +11,5 @@ class PayementOption {
 List<PayementOption> payementOption = [
   PayementOption(text: Appstrings.CheckOutScreen2Cash, image: Appassets.checkoutimagecash),
   PayementOption(text: Appstrings.CheckOutScreen2Creditcard, image: Appassets.checkoutimageCreditcard),
-  PayementOption(text: Appstrings.CheckOutScreen2more, image: Appassets.checkoutimagemore)
+  PayementOption(text: Appstrings.CheckOutScreen2more, image: Appassets.checkoutimagemore),
 ];

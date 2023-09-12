@@ -1,5 +1,5 @@
 // ignore_for_file: file_names
-
+import 'package:ecommerce/provider/fire_base_authprovider.dart';
 import 'package:ecommerce/Authentication/signin_screen.dart';
 import 'package:ecommerce/utils/appassets.dart';
 import 'package:ecommerce/utils/appcolors.dart';
@@ -10,6 +10,7 @@ import 'package:ecommerce/widget/caustom_text.dart';
 import 'package:ecommerce/widget/caustom_textfield.dart';
 import 'package:ecommerce/widget/custom_text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -50,13 +51,19 @@ class _SignupState extends State<Signup> {
                               padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8, bottom: 40),
                               child: CustomTextField(controller: signupcnfrmpasswordController, hinttext: Appstrings.signupcnfrmpasshint, keyboardfoam: TextInputType.visiblePassword)),
                           Center(
-                              child: CustomTextButton(
-                                  bordercolor: Appcolors.white,
-                                  hieght: GetScreenSize.getScreenWidth(context) * 0.13,
-                                  width: GetScreenSize.getScreenWidth(context) * 0.4,
-                                  text: Appstrings.signupbutton,
-                                  textcolor: Appcolors.white,
-                                  buttoncolor: Appcolors.browncolorbutton)),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+                                    authProvider.signUp(
+                                        signupnameController.text.trim(), signupemailController.text.trim(), signuppasswordController.text.trim(), signupcnfrmpasswordController.text.trim(), context);
+                                  },
+                                  child: CustomTextButton(
+                                      bordercolor: Appcolors.white,
+                                      hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+                                      width: GetScreenSize.getScreenWidth(context) * 0.4,
+                                      text: Appstrings.signupbutton,
+                                      textcolor: Appcolors.white,
+                                      buttoncolor: Appcolors.browncolorbutton))),
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.03),
                           Center(
                               child: Opacity(

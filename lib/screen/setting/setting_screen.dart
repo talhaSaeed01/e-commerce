@@ -1,8 +1,11 @@
+import 'package:ecommerce/Authentication/signin_screen.dart';
 import 'package:ecommerce/class/setting_class.dart';
+import 'package:ecommerce/provider/fire_base_authprovider.dart';
 import 'package:ecommerce/utils/appassets.dart';
 import 'package:ecommerce/utils/appcolors.dart';
 import 'package:ecommerce/utils/appstrings.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -14,6 +17,7 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return SafeArea(
         child: Scaffold(
             body: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -54,13 +58,17 @@ class _SettingScreenState extends State<SettingScreen> {
                         separatorBuilder: (context, index) => const Divider(),
                         itemCount: settinglist.length)),
                 const Divider(),
-                Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [Icon(Icons.logout, color: Appcolors.discover3TileColor.withOpacity(0.45)), const SizedBox(width: 10), Expanded(child: Text(Appstrings.logout))],
-                    ))
+                GestureDetector(
+                    onTap: () {
+                      authProvider.signOut();
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Signin()));
+                    },
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [Icon(Icons.logout, color: Appcolors.discover3TileColor.withOpacity(0.45)), const SizedBox(width: 10), Expanded(child: Text(Appstrings.logout))])))
               ])))
     ])));
   }

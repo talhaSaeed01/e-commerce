@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:ecommerce/firebase/firebase_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/class/product_class.dart';

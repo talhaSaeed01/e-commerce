@@ -10,13 +10,6 @@ class CustomArrowback extends StatelessWidget {
         elevation: 4.0,
         shape: const CircleBorder(),
         shadowColor: Appcolors.black,
-        child: CircleAvatar(
-            backgroundColor: Appcolors.white,
-            child: Padding(
-                padding: const EdgeInsets.only(left: 6),
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Appcolors.black,
-                ))));
+        child: CircleAvatar(backgroundColor: Appcolors.white, child: Padding(padding: const EdgeInsets.only(left: 6), child: Icon(Icons.arrow_back_ios, color: Appcolors.black))));
   }
 }

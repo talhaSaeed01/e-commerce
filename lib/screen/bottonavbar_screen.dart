@@ -6,7 +6,9 @@ import 'package:ecommerce/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
 class Bottomnavbardesgin extends StatefulWidget {
+  final dynamic userid;
   const Bottomnavbardesgin({
+    this.userid,
     super.key,
   });
 
@@ -38,18 +40,18 @@ class _BottomnavbardesginState extends State<Bottomnavbardesgin> {
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
                   BottomNavigationBarItem(icon: Icon(Icons.search), label: ""),
                   BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: ""),
-                  BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+                  BottomNavigationBarItem(icon: Icon(Icons.person), label: "")
                 ])));
   }
 
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return const HomeScreen();
+        return HomeScreen(currentid: widget.userid);
       case 1:
-        return const Discoverscreen();
+        return Discoverscreen(currentid: widget.userid);
       case 2:
-        return const CartScreen();
+        return CartScreen(currentid: widget.userid);
       case 3:
         return const SettingScreen();
       default:

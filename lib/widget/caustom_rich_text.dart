@@ -31,10 +31,7 @@ class _CaustomrichtextState extends State<Caustomrichtext> {
     return RichText(
         maxLines: 1,
         text: TextSpan(text: widget.richtext1, style: TextStyle(fontSize: widget.richtextsize1, color: widget.richtextcolor1, fontWeight: widget.richtextfontwieght1), children: <TextSpan>[
-          TextSpan(
-            text: widget.richtext2,
-            style: TextStyle(fontSize: widget.richtextsize2, color: widget.richtextcolor2, fontWeight: widget.richtextfontwieght2, decoration: TextDecoration.underline),
-          )
+          TextSpan(text: widget.richtext2, style: TextStyle(fontSize: widget.richtextsize2, color: widget.richtextcolor2, fontWeight: widget.richtextfontwieght2, decoration: TextDecoration.underline))
         ]));
   }
 }

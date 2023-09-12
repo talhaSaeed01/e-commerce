@@ -39,22 +39,20 @@ class _OtPScreenState extends State<OtPScreen> {
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.06),
                           const OtpInputField(),
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: GetScreenSize.getScreenWidth(context) * 0.08),
-                            child: Opacity(
-                                opacity: Appstrings.opacityforlightblacktext,
-                                child: CaustomText(text: Appstrings.OTPresend, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.03, maxline: 3, fontWeight: FontWeight.w400)),
-                          ),
+                              padding: EdgeInsets.symmetric(vertical: GetScreenSize.getScreenWidth(context) * 0.08),
+                              child: Opacity(
+                                  opacity: Appstrings.opacityforlightblacktext,
+                                  child: CaustomText(text: Appstrings.OTPresend, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.03, maxline: 3, fontWeight: FontWeight.w400))),
                           Center(
                               child: GestureDetector(
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Newpass())),
-                            child: CustomTextButton(
-                                bordercolor: Appcolors.white,
-                                hieght: GetScreenSize.getScreenWidth(context) * 0.13,
-                                width: GetScreenSize.getScreenWidth(context) * 0.4,
-                                text: Appstrings.FSbutton,
-                                textcolor: Appcolors.white,
-                                buttoncolor: Appcolors.browncolorbutton),
-                          ))
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Newpass())),
+                                  child: CustomTextButton(
+                                      bordercolor: Appcolors.white,
+                                      hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+                                      width: GetScreenSize.getScreenWidth(context) * 0.4,
+                                      text: Appstrings.FSbutton,
+                                      textcolor: Appcolors.white,
+                                      buttoncolor: Appcolors.browncolorbutton)))
                         ]))))));
   }
 }

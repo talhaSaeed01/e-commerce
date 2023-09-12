@@ -28,10 +28,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
               Padding(
                   padding: const EdgeInsets.only(top: 25, left: 3, bottom: 25),
                   child: ListTile(
-                    leading: CircleAvatar(radius: 30, backgroundImage: AssetImage(Appassets.avatar)),
-                    title: Text(Appstrings.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                    subtitle: Text(Appstrings.email, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11)),
-                  )),
+                      leading: CircleAvatar(radius: 30, backgroundImage: AssetImage(Appassets.avatar)),
+                      title: Text(Appstrings.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                      subtitle: Text(Appstrings.email, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11)))),
               SizedBox(
                   height: GetScreenSize.getScreenWidth(context) * 1 / 1.8,
                   child: Padding(
@@ -39,13 +38,14 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
                         const Divider(),
                         GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [Icon(Icons.home, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.home, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))]),
-                        ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                              Icon(Icons.home, color: Appcolors.grey),
+                              const SizedBox(width: 7),
+                              Text(Appstrings.home, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))
+                            ])),
                         const Divider(),
                         GestureDetector(
                             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchScreen())),
@@ -56,7 +56,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             ])),
                         const Divider(),
                         GestureDetector(
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen())),
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen())),
                             child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                               Icon(Icons.shopping_bag, color: Appcolors.grey),
                               const SizedBox(width: 7),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//....custom text usefor everyone...................//
 class CaustomText extends StatefulWidget {
   final String text;
   final Color color;

@@ -37,9 +37,8 @@ class _ForgetScreenState extends State<ForgetScreen> {
                               opacity: Appstrings.opacityforlightblacktext,
                               child: CaustomText(text: Appstrings.FSsubtitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.04, maxline: 3, fontWeight: FontWeight.w400)),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20, left: 10, right: 15, bottom: 50),
-                            child: CustomTextField(controller: fSemailcontroller, hinttext: Appstrings.FSemailhint, keyboardfoam: TextInputType.emailAddress, prefixIcon: const Icon(Icons.mail)),
-                          ),
+                              padding: const EdgeInsets.only(top: 20, left: 10, right: 15, bottom: 50),
+                              child: CustomTextField(controller: fSemailcontroller, hinttext: Appstrings.FSemailhint, keyboardfoam: TextInputType.emailAddress, prefixIcon: const Icon(Icons.mail))),
                           Center(
                               child: GestureDetector(
                                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const OtPScreen())),

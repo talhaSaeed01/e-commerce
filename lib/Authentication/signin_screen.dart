@@ -1,5 +1,6 @@
 import 'package:ecommerce/Authentication/Signup_screen.dart';
 import 'package:ecommerce/Authentication/forget_screen.dart';
+import 'package:ecommerce/provider/fire_base_authprovider.dart';
 import 'package:ecommerce/utils/appassets.dart';
 import 'package:ecommerce/utils/appcolors.dart';
 import 'package:ecommerce/utils/appstrings.dart';
@@ -9,6 +10,7 @@ import 'package:ecommerce/widget/caustom_text.dart';
 import 'package:ecommerce/widget/caustom_textfield.dart';
 import 'package:ecommerce/widget/custom_text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -36,7 +38,7 @@ class _SigninState extends State<Signin> {
                           CaustomText(text: Appstrings.signupscreensubtitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold),
                           Padding(
                               padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10, top: 35),
-                              child: CustomTextField(controller: signinemailController, hinttext: Appstrings.signupnamehint, keyboardfoam: TextInputType.name)),
+                              child: CustomTextField(controller: signinemailController, hinttext: Appstrings.signupemailhint, keyboardfoam: TextInputType.name)),
                           Padding(
                               padding: const EdgeInsets.only(top: 10, bottom: 30, right: 8, left: 8),
                               child: CustomTextField(controller: signinpasswordController, hinttext: Appstrings.signuppasswordhint, keyboardfoam: TextInputType.visiblePassword)),
@@ -50,13 +52,18 @@ class _SigninState extends State<Signin> {
                                           text: Appstrings.signinforgettext, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.033, maxline: 1, fontWeight: FontWeight.bold)))),
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.06),
                           Center(
-                              child: CustomTextButton(
-                                  bordercolor: Appcolors.white,
-                                  hieght: GetScreenSize.getScreenWidth(context) * 0.13,
-                                  width: GetScreenSize.getScreenWidth(context) * 0.4,
-                                  text: Appstrings.signinBTtext,
-                                  textcolor: Appcolors.white,
-                                  buttoncolor: Appcolors.browncolorbutton)),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+                                    authProvider.signIn(signinemailController.text.trim(), signinpasswordController.text.trim(), context);
+                                  },
+                                  child: CustomTextButton(
+                                      bordercolor: Appcolors.white,
+                                      hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+                                      width: GetScreenSize.getScreenWidth(context) * 0.4,
+                                      text: Appstrings.signinBTtext,
+                                      textcolor: Appcolors.white,
+                                      buttoncolor: Appcolors.browncolorbutton))),
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.03),
                           Center(
                               child: Opacity(
@@ -64,7 +71,6 @@ class _SigninState extends State<Signin> {
                                   child:
                                       CaustomText(text: Appstrings.signinwith, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.03, maxline: 1, fontWeight: FontWeight.w400))),
                           Padding(padding: const EdgeInsets.all(17.0), child: Center(child: Image.asset(Appassets.logosocial))),
-                          // const Spacer(),
                           SizedBox(height: GetScreenSize.getScreenWidth(context) * 0.09),
                           GestureDetector(
                               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Signup())),

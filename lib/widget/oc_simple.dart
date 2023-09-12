@@ -14,10 +14,6 @@ class ocsimple extends StatefulWidget {
 class _ocsimpleState extends State<ocsimple> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: GetScreenSize.getScreenWidth(context),
-      height: GetScreenSize.getScreenWidth(context) * 0.75,
-      decoration: BoxDecoration(color: Appcolors.boxcoloronboarding),
-    );
+    return Container(width: GetScreenSize.getScreenWidth(context), height: GetScreenSize.getScreenWidth(context) * 0.75, decoration: BoxDecoration(color: Appcolors.boxcoloronboarding));
   }
 }

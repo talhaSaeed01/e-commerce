@@ -5,11 +5,7 @@ class Setting {
   final String text;
   final IconData icon2;
 
-  Setting({
-    required this.icon,
-    required this.text,
-    required this.icon2,
-  });
+  Setting({required this.icon, required this.text, required this.icon2});
 }
 
 List<Setting> settinglist = [

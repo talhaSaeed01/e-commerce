@@ -7,7 +7,8 @@ class Appstrings {
   static var welcomeh1 = "Welcome to GemStore !";
   static var welcomeh2 = "The home of our fashioniote";
   static var btwelcome = "Get Started";
-
+  static var adminpannel = 'Admin Pannel';
+  static var riderscreen = 'For Rider';
   //......................................indicator............................
   static var buttontextShoppingnow = "Shopping now";
   //......................................onboardingscreen1............................
@@ -37,13 +38,11 @@ class Appstrings {
   static var signinwith = 'or log in with';
   static var signinR1 = 'Don’t have an account?';
   static var signinR2 = 'Sign Up';
-
   //................................. Forgetscreen..................................
   static var FStitle = "Forgot password?";
   static var FSsubtitle = "Enter email associated with your account and we’ll send and email with intructions to reset your password";
   static var FSemailhint = "enter your email here";
   static var FSbutton = "Next";
-
   //................................. OtPscreen..................................
   static var OTPtitle = "Verification code";
   static var OTPsubtitle = "Please enter the verification code we sent to your email address";
@@ -54,14 +53,11 @@ class Appstrings {
   static var newpassh1 = 'Password';
   static var newpassh2 = 'Confirm Password';
   static var newpassbutton = "Confirm";
-
   //....................................Bottomsheet.................................
   static var bottomsheettitle = "Your password has been changed";
   static var bottomsheetsubtitle = "Welcome back! Discover now!";
   static var bottomsheetbutton = "Browse home";
-
   //....................................Homescreen.................................
-
   static var homescreentitle = "Gemstore";
   static var homeCT1 = "Women";
   static var homeCT2 = "Men";
@@ -167,7 +163,6 @@ class Appstrings {
   static var CheckOutBillingaddress = "Billing Address";
   static var CheckBoxtext = 'Copy address data from shipping';
   static var CheckOutButton = "Continue to payment";
-
   //................Checkout Screen 2 ........................
   static var CheckOutScreen2step2 = "Step 2";
   static var CheckOutScreen2payement = "Payement";
@@ -179,7 +174,6 @@ class Appstrings {
   static var CheckOutScreen2checkinwith = "Check in with";
   static var CheckOutScreen2checkboxtext = "I agree Term and Condition";
   static var CheckOutScreen2button = "Place my order";
-
   //................Checkout Screen 3 ........................
   static var CheckOutScreen3ordercomp = "Order Completed";
   static var CheckOutScreen3ordercomptext = 'Thank you for your purchase.\nYou can view your order in ‘My Orders’ section.';
@@ -187,21 +181,14 @@ class Appstrings {
   //....................Home drawer..........................
   static var name = "Sunie Pham";
   static var email = 'sunieux@gmail.com';
-
   static var home = 'Home';
-
   static var search = 'Search';
-
   static var cart = 'Cart';
-
   static var setting = 'Setting';
   static var other = 'Other';
-
   static var support = 'Support';
   static var aboutus = 'About Us';
-
   static var light = 'Light';
-
   static var dark = 'Dark';
   static var logout = "logout";
   //........................NotificationScreen............
@@ -211,4 +198,6 @@ class Appstrings {
   static var notisubtitle2 = 'New Autumn Collection 30% off';
   static var notititle3 = 'Holiday sale 50%';
   static var notisubtitle3 = 'Tap here to get 50% voucher.';
+  //.................Rider Screen...........................
+  static var riderscreentitle = 'Rider Order Details';
 }

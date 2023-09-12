@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:ecommerce/screen/bottonavbar_screen.dart';
 import 'package:ecommerce/utils/appassets.dart';
 import 'package:ecommerce/utils/appcolors.dart';
@@ -40,7 +42,7 @@ class _CheckOut_Screen3State extends State<CheckOut_Screen3> {
                           child: Text(Appstrings.CheckOutScreen3ordercomptext,
                               textAlign: TextAlign.center, style: TextStyle(color: Appcolors.black, fontSize: 14, fontFamily: 'Product Sans Medium', fontWeight: FontWeight.w400, height: 0)))),
                   GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Bottomnavbardesgin())),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Bottomnavbardesgin())),
                       child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 60),
                           child: CustomTextButton(

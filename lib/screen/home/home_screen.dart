@@ -75,11 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,
                                   itemCount: categories.length,
-                                  itemBuilder: (context, index) => EachCategoreyDesgin(
-                                        image: categories[index].imageAsset,
-                                        text: categories[index].name,
-                                        id: widget.currentid,
-                                      ),
+                                  itemBuilder: (context, index) => EachCategoreyDesgin(image: categories[index].imageAsset, text: categories[index].name, id: widget.currentid),
                                   separatorBuilder: (context, index) => SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.09)))),
                     ),
                     if (firstbanner == null) const CircularProgressIndicator(),
@@ -116,11 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => DetailScreen(
-                                      img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
-                                      name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
-                                      price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price),
-                                )),
+                                    builder: (context) => DetailScreen(
+                                        img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
+                                        name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
+                                        price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price))),
                             child: FeaturedProductDesgin(
                                 img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
                                 name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,

@@ -91,7 +91,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [Icon(Icons.help, color: Appcolors.grey), const SizedBox(width: 7), Text(Appstrings.aboutus, style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 17))]),
-                        const Divider()
+                        const Divider(),
                       ]))),
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15),

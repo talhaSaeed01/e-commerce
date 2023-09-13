@@ -7,18 +7,13 @@ import 'package:flutter/material.dart';
 
 class Bottomnavbardesgin extends StatefulWidget {
   final dynamic userid;
-  const Bottomnavbardesgin({
-    this.userid,
-    super.key,
-  });
-
+  const Bottomnavbardesgin({this.userid, super.key});
   @override
   State<Bottomnavbardesgin> createState() => _BottomnavbardesginState();
 }
 
 class _BottomnavbardesginState extends State<Bottomnavbardesgin> {
   int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

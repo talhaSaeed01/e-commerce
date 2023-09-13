@@ -100,7 +100,7 @@ class Appstrings {
   static var discovertitle2 = 'Bags';
   static var discovertitle3 = 'Shoes';
   static var discovertitle4 = 'Jacket';
-  //........................SearchScreen......................
+  //........................SearchScreen..........................
   static var searchtitle1 = 'Reacent Searches';
   static var nothinghere = "Nothing is search here";
   static var searchtitle2 = 'Popular this week';

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, must_be_immutable
+
 import 'package:ecommerce/Authentication/signin_screen.dart';
 import 'package:ecommerce/provider/fire_base_authprovider.dart';
 import 'package:ecommerce/provider/seller_provider.dart';
@@ -31,7 +33,6 @@ class _SellerScreenState extends State<SellerScreen> {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-
     var selleruniqueId = FirebaseAuth.instance.currentUser!.uid;
     return SafeArea(
         child: Scaffold(

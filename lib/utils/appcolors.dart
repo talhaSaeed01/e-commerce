@@ -18,4 +18,5 @@ class Appcolors {
   static var starcolorblue = const Color.fromARGB(255, 18, 94, 156);
   static var blue = Colors.blue;
   static var green = const Color.fromARGB(255, 55, 145, 101);
+  static var yellow = Colors.yellow;
 }

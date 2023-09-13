@@ -1,4 +1,5 @@
-import 'dart:async';
+// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommerce/provider/cart_provider.dart';

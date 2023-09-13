@@ -17,7 +17,6 @@ class RiderPannel extends StatefulWidget {
 
 class _RiderPannelState extends State<RiderPannel> {
   final Riderprovider _adminProvider = Riderprovider();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

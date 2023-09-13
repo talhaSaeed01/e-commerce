@@ -20,71 +20,69 @@ class SellerProductsScreen extends StatelessWidget {
     final sellerProvider = Provider.of<SellerProvider>(context);
     return SafeArea(
         child: Scaffold(
-            body: Stack(
-      children: [
-        Positioned.fill(child: Image.asset(Appassets.riderbackgroundimage, fit: BoxFit.cover)),
-        Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                GestureDetector(onTap: () => Navigator.pop(context), child: const CustomArrowback()),
-                CaustomText(text: Appstrings.sellerScreentitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.05, maxline: 1, fontWeight: FontWeight.bold),
-                SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.035)
-              ])),
-          Expanded(
-              child: FutureBuilder<List<DocumentSnapshot>>(
-                  future: sellerProvider.fetchProductsBySellerId(sellerId),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Center(child: Text('Error: ${snapshot.error}'));
-                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      return const Center(child: Text('No products found for this seller.'));
-                    } else {
-                      final products = snapshot.data!;
-                      return ListView.separated(
-                          separatorBuilder: (context, index) => const SizedBox(height: 9),
-                          padding: const EdgeInsetsDirectional.symmetric(horizontal: 10),
-                          itemCount: products.length,
-                          itemBuilder: (context, index) {
-                            final product = products[index].data() as Map<String, dynamic>;
-                            return Container(
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Appcolors.white.withOpacity(0.44)),
-                                child: Stack(children: [
-                                  Positioned(
-                                      bottom: 1,
-                                      right: 1,
-                                      left: 130,
-                                      child: SizedBox(
-                                          height: GetScreenSize.getScreenWidth(context) * 0.33,
-                                          child: CachedNetworkImage(
-                                              imageUrl: product['image'],
-                                              placeholder: (context, url) => const CircularProgressIndicator(),
-                                              errorWidget: (context, url, error) => const Icon(Icons.error),
-                                              fit: BoxFit.fill))),
-                                  Padding(
-                                      padding: const EdgeInsets.all(14.0),
-                                      child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                        Center(child: Text("Product", style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.051, fontWeight: FontWeight.bold))),
-                                        const Divider(thickness: 1),
-                                        Text('Product Name:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                        Text(product['title']),
-                                        Text('Product Price:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                        Text(product['price']),
-                                        Text('Product Type:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                        Text(product['type']),
-                                        Text('Product TileColor: ', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                        Text(product['tileColor']),
-                                        Text('Product CircleColor:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                        Text(product['circleContainerColor'])
-                                      ]))
-                                ]));
-                          });
-                    }
-                  }))
-        ]),
-      ],
-    )));
+            body: Stack(children: [
+      Positioned.fill(child: Image.asset(Appassets.riderbackgroundimage, fit: BoxFit.cover)),
+      Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              GestureDetector(onTap: () => Navigator.pop(context), child: const CustomArrowback()),
+              CaustomText(text: Appstrings.sellerScreentitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.05, maxline: 1, fontWeight: FontWeight.bold),
+              SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.035)
+            ])),
+        Expanded(
+            child: FutureBuilder<List<DocumentSnapshot>>(
+                future: sellerProvider.fetchProductsBySellerId(sellerId),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text('No products found for this seller.'));
+                  } else {
+                    final products = snapshot.data!;
+                    return ListView.separated(
+                        separatorBuilder: (context, index) => const SizedBox(height: 9),
+                        padding: const EdgeInsetsDirectional.symmetric(horizontal: 10),
+                        itemCount: products.length,
+                        itemBuilder: (context, index) {
+                          final product = products[index].data() as Map<String, dynamic>;
+                          return Container(
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Appcolors.white.withOpacity(0.44)),
+                              child: Stack(children: [
+                                Positioned(
+                                    bottom: 1,
+                                    right: 1,
+                                    left: 130,
+                                    child: SizedBox(
+                                        height: GetScreenSize.getScreenWidth(context) * 0.33,
+                                        child: CachedNetworkImage(
+                                            imageUrl: product['image'],
+                                            placeholder: (context, url) => const CircularProgressIndicator(),
+                                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                                            fit: BoxFit.fill))),
+                                Padding(
+                                    padding: const EdgeInsets.all(14.0),
+                                    child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                      Center(child: Text("Product", style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.051, fontWeight: FontWeight.bold))),
+                                      const Divider(thickness: 1),
+                                      Text('Product Name:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                      Text(product['title']),
+                                      Text('Product Price:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                      Text(product['price']),
+                                      Text('Product Type:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                      Text(product['type']),
+                                      Text('Product TileColor: ', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                      Text(product['tileColor']),
+                                      Text('Product CircleColor:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                      Text(product['circleContainerColor'])
+                                    ]))
+                              ]));
+                        });
+                  }
+                }))
+      ])
+    ])));
   }
 }

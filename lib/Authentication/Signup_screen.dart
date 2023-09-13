@@ -24,6 +24,7 @@ class _SignupState extends State<Signup> {
   TextEditingController signuppasswordController = TextEditingController();
   TextEditingController signupnameController = TextEditingController();
   TextEditingController signupcnfrmpasswordController = TextEditingController();
+  bool isSeller = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,14 +49,24 @@ class _SignupState extends State<Signup> {
                               padding: const EdgeInsets.all(8.0),
                               child: CustomTextField(controller: signuppasswordController, hinttext: Appstrings.signuppasswordhint, keyboardfoam: TextInputType.visiblePassword)),
                           Padding(
-                              padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8, bottom: 40),
+                              padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8, bottom: 20),
                               child: CustomTextField(controller: signupcnfrmpasswordController, hinttext: Appstrings.signupcnfrmpasshint, keyboardfoam: TextInputType.visiblePassword)),
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                            Text('Seller', style: TextStyle(color: Appcolors.black, fontWeight: FontWeight.w500, fontSize: 16)),
+                            Switch(
+                                value: isSeller,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isSeller = value;
+                                  });
+                                })
+                          ]),
                           Center(
                               child: GestureDetector(
                                   onTap: () {
                                     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-                                    authProvider.signUp(
-                                        signupnameController.text.trim(), signupemailController.text.trim(), signuppasswordController.text.trim(), signupcnfrmpasswordController.text.trim(), context);
+                                    authProvider.signUp(signupnameController.text.trim(), signupemailController.text.trim(), signuppasswordController.text.trim(),
+                                        signupcnfrmpasswordController.text.trim(), isSeller, context);
                                   },
                                   child: CustomTextButton(
                                       bordercolor: Appcolors.white,

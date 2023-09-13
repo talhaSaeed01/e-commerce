@@ -23,12 +23,7 @@ class _RiderPannelState extends State<RiderPannel> {
     return SafeArea(
         child: Scaffold(
             body: Stack(children: [
-      Positioned.fill(
-        child: Image.asset(
-          Appassets.riderbackgroundimage,
-          fit: BoxFit.cover,
-        ),
-      ),
+      Positioned.fill(child: Image.asset(Appassets.riderbackgroundimage, fit: BoxFit.cover)),
       Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -42,51 +37,55 @@ class _RiderPannelState extends State<RiderPannel> {
               future: _adminProvider.fetchAllUserOrders(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (snapshot.data == null || snapshot.data!.isEmpty) {
-                  return Center(child: Text('No orders found.'));
+                  return const Center(child: Text('No orders found.'));
                 } else {
                   List<Map<String, dynamic>> orders = List<Map<String, dynamic>>.from(snapshot.data!);
                   return ListView.separated(
-                      padding: const EdgeInsets.all(8),
-                      separatorBuilder: (context, index) => const SizedBox(height: 5),
+                      padding: const EdgeInsets.all(15),
+                      separatorBuilder: (context, index) => const SizedBox(height: 15),
                       itemCount: orders.length,
                       itemBuilder: (context, index) {
-                        return Card(
-                            elevation: 7,
-                            child: Padding(
-                                padding: const EdgeInsets.all(14.0),
-                                child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                  Center(child: Text("Order Detail", style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.051, fontWeight: FontWeight.bold))),
-                                  Text('Order ID:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                  Text('${orders[index]['orderId']}'),
-                                  Text('Caustomer ID:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                  Text(' ${orders[index]['userid']}'),
-                                  Text('Items Name:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                  Text('${orders[index]['name']}'),
-                                  Text('Total Price: ', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                  Text('\$${orders[index]['totalPrice']}'),
-                                  Text('Subtotal Price: ', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                  Text('\$${orders[index]['subtotalPrice'].toStringAsFixed(2)}'),
-                                  Text('Status', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
-                                  Text('${orders[index]['status']}'),
-                                  Padding(
-                                      padding: const EdgeInsets.only(top: 10),
-                                      child: Center(
-                                          child: GestureDetector(
-                                              onTap: () {
-                                                _adminProvider.updateOrderStatus(orders[index]['orderId'], 'Delivered', orders[index]['userid']);
-                                              },
-                                              child: CustomTextButton(
-                                                  hieght: GetScreenSize.getScreenWidth(context) * 0.12,
-                                                  width: GetScreenSize.getScreenWidth(context) * 0.55,
-                                                  text: "Delivered",
-                                                  textcolor: Appcolors.white,
-                                                  buttoncolor: Appcolors.boxcoloronboarding,
-                                                  bordercolor: Appcolors.white))))
-                                ])));
+                        return Container(
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Appcolors.white),
+                            child: Stack(children: [
+                              Positioned(bottom: 1, right: 1, left: 110, child: Image.asset(Appassets.riderimage)),
+                              Padding(
+                                  padding: const EdgeInsets.all(14.0),
+                                  child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                    Center(child: Text("Order Detail", style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.051, fontWeight: FontWeight.bold))),
+                                    const Divider(thickness: 1),
+                                    Text('Order ID:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                    Text('${orders[index]['orderId']}'),
+                                    Text('Caustomer ID:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                    Text(' ${orders[index]['userid']}'),
+                                    Text('Items Name:', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                    Text('${orders[index]['name']}'),
+                                    Text('Total Price: ', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                    Text('\$${orders[index]['totalPrice']}'),
+                                    Text('Subtotal Price: ', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                    Text('\$${orders[index]['subtotalPrice'].toStringAsFixed(2)}'),
+                                    Text('Status', style: TextStyle(color: Appcolors.black, fontSize: GetScreenSize.getScreenWidth(context) * 0.041, fontWeight: FontWeight.bold)),
+                                    Text('${orders[index]['status']}'),
+                                    // Image.asset(Appassets.riderimage, alignment: Alignment.centerRight),
+                                    Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: GestureDetector(
+                                            onTap: () {
+                                              _adminProvider.updateOrderStatus(orders[index]['orderId'], 'Delivered', orders[index]['userid']);
+                                            },
+                                            child: CustomTextButton(
+                                                hieght: GetScreenSize.getScreenWidth(context) * 0.12,
+                                                width: GetScreenSize.getScreenWidth(context) * 0.35,
+                                                text: "Delivered",
+                                                textcolor: Appcolors.white,
+                                                buttoncolor: Appcolors.boxcoloronboarding,
+                                                bordercolor: Appcolors.white)))
+                                  ]))
+                            ]));
                       });
                 }
               }))

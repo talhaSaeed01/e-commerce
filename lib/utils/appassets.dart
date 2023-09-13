@@ -37,6 +37,8 @@ class Appassets {
   static var checkoutimageorder = 'assets/images/order.png';
   static var avatar = 'assets/images/avatar.png';
   static var riderbackgroundimage = "assets/images/chatbackgroundimage.png";
+  static var riderimage = 'assets/images/riderimage.png';
+  static var shopSellerimage = "assets/images/shopsellerimage.png";
 }
 // class Appassets {
 //   static var welcomebackgroundimage = 'assets/images/welcome.jpg';

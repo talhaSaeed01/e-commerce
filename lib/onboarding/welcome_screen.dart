@@ -32,34 +32,46 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               errorWidget: (context, url, error) => const Icon(Icons.error),
               fit: BoxFit.fitHeight)),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.60,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.47,
           left: GetScreenSize.getScreenWidth(context) * 0.13,
           child: CaustomText(text: Appstrings.welcomeh1, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.06, maxline: 1, fontWeight: FontWeight.bold)),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.50,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.41,
           left: GetScreenSize.getScreenWidth(context) * 0.19,
           child: CaustomText(text: Appstrings.welcomeh2, color: Appcolors.white, size: GetScreenSize.getScreenWidth(context) * 0.04, maxline: 1, fontWeight: FontWeight.bold)),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.3,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.24,
           left: GetScreenSize.getScreenWidth(context) * 0.21,
           child: GestureDetector(
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RiderPannel())),
               child: CustomTextButton(
                   bordercolor: Appcolors.white,
-                  hieght: GetScreenSize.getScreenWidth(context) * 0.15,
-                  width: GetScreenSize.getScreenWidth(context) * 0.55,
+                  hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+                  width: GetScreenSize.getScreenWidth(context) * 0.52,
                   text: Appstrings.riderscreen,
                   textcolor: Appcolors.white,
                   buttoncolor: Appcolors.white.withOpacity(0.25)))),
+      // Positioned(
+      //     bottom: GetScreenSize.getScreenWidth(context) * 0.4,
+      //     left: GetScreenSize.getScreenWidth(context) * 0.21,
+      //     child: GestureDetector(
+      //         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RiderPannel())),
+      //         child: CustomTextButton(
+      //             bordercolor: Appcolors.white,
+      //             hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+      //             width: GetScreenSize.getScreenWidth(context) * 0.52,
+      //             text: Appstrings.sellerScreenbutton,
+      //             textcolor: Appcolors.white,
+      //             buttoncolor: Appcolors.white.withOpacity(0.25)))),
       Positioned(
-          bottom: GetScreenSize.getScreenWidth(context) * 0.1,
+          bottom: GetScreenSize.getScreenWidth(context) * 0.08,
           left: GetScreenSize.getScreenWidth(context) * 0.21,
           child: GestureDetector(
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const PageIndicatorExample())),
               child: CustomTextButton(
                   bordercolor: Appcolors.white,
-                  hieght: GetScreenSize.getScreenWidth(context) * 0.15,
-                  width: GetScreenSize.getScreenWidth(context) * 0.55,
+                  hieght: GetScreenSize.getScreenWidth(context) * 0.13,
+                  width: GetScreenSize.getScreenWidth(context) * 0.52,
                   text: Appstrings.btwelcome,
                   textcolor: Appcolors.white,
                   buttoncolor: Appcolors.white.withOpacity(0.25))))

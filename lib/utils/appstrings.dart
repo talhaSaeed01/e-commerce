@@ -9,6 +9,7 @@ class Appstrings {
   static var btwelcome = "Get Started";
   static var adminpannel = 'Admin Pannel';
   static var riderscreen = 'For Rider';
+  static var sellerScreenbutton = 'Seller';
   //......................................indicator............................
   static var buttontextShoppingnow = "Shopping now";
   //......................................onboardingscreen1............................
@@ -200,4 +201,13 @@ class Appstrings {
   static var notisubtitle3 = 'Tap here to get 50% voucher.';
   //.................Rider Screen...........................
   static var riderscreentitle = 'Rider Order Details';
+  //....................Seller Screen....................
+  static var sellerScreentitle = 'Shop Seller';
+  static var circleContainerColorController = " Enter circleContainerColor";
+  static var imageurlController = 'Enter imageurl';
+  static var priceController = 'Enter price';
+  static var tileColorController = 'Enter tileColor';
+  static var titleController = 'Enter title';
+  static var typeController = 'Enter type';
+  static var done = "Done";
 }

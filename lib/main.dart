@@ -13,6 +13,7 @@ import 'package:ecommerce/provider/detail_screen_provider.dart';
 import 'package:ecommerce/provider/drawer_provider.dart';
 import 'package:ecommerce/provider/fire_base_authprovider.dart';
 import 'package:ecommerce/provider/product_provider.dart';
+import 'package:ecommerce/provider/seller_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider<CheckoutProvider1>(create: (_) => CheckoutProvider1()),
       ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
       ChangeNotifierProvider<Riderprovider>(create: (_) => Riderprovider()),
+      ChangeNotifierProvider<SellerProvider>(create: (_) => SellerProvider()),
       ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider())
     ], child: MaterialApp(theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()), debugShowCheckedModeBanner: false, home: const Scaffold(body: WelcomeScreen())));
   }

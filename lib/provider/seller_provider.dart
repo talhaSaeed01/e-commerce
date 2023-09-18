@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +22,37 @@ class SellerProvider extends ChangeNotifier {
       return products;
     } catch (e) {
       print('Error fetching products by sellerId: $e');
+      return [];
+    }
+  }
+
+  //.........................fetching order he get...........................
+
+  Future<List<Map<String, dynamic>>> fetchOrdersBySellerId(String sellerId) async {
+    try {
+      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+      CollectionReference userOrdersCollection = _firestore.collection('orders');
+      QuerySnapshot<Map<String, dynamic>> querySnapshot = await userOrdersCollection.get() as QuerySnapshot<Map<String, dynamic>>;
+      List<Map<String, dynamic>> orders = [];
+      querySnapshot.docs.forEach((orderDoc) {
+        Map<String, dynamic> orderData = orderDoc.data();
+        String orderId = orderDoc.id;
+        List<dynamic> items = orderData['items'] ?? [];
+        // Filter items where the seller ID matches the specified seller ID
+        List<dynamic> matchingItems = items.where((item) => item['sellerid'] == sellerId).toList();
+        if (matchingItems.isNotEmpty) {
+          String itemNames = matchingItems.map((item) => item['name']).join(', ');
+          String itemPrice = matchingItems.map((item) => item['price']).join(', ');
+
+          String itemimg = matchingItems.map((item) => item['img']).join(', ');
+          orders.add({'orderId': orderId, 'name': itemNames, 'sellerid': sellerId, 'price': itemPrice, 'img': itemimg});
+          print(itemNames.toString());
+        }
+      });
+      print(orders.toString());
+      return orders;
+    } catch (e) {
+      print('Error fetching orders by seller ID: $e');
       return [];
     }
   }

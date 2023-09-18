@@ -3,6 +3,7 @@
 import 'package:ecommerce/Authentication/signin_screen.dart';
 import 'package:ecommerce/provider/fire_base_authprovider.dart';
 import 'package:ecommerce/provider/seller_provider.dart';
+import 'package:ecommerce/seller/seller_order_Screen.dart';
 import 'package:ecommerce/seller/seller_product_screen.dart';
 import 'package:ecommerce/utils/appassets.dart';
 import 'package:ecommerce/utils/appcolors.dart';
@@ -47,8 +48,8 @@ class _SellerScreenState extends State<SellerScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                     SizedBox(
                         width: GetScreenSize.getScreenWidth(context) * 0.095,
                         child: Material(
@@ -64,7 +65,20 @@ class _SellerScreenState extends State<SellerScreen> {
                               child: CircleAvatar(
                                   backgroundColor: Appcolors.white, child: Padding(padding: const EdgeInsets.only(left: 1), child: Icon(Icons.dashboard_customize_outlined, color: Appcolors.black))),
                             ))),
-                    CaustomText(text: Appstrings.sellerScreentitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.055, maxline: 1, fontWeight: FontWeight.bold),
+                    SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.17),
+                    Expanded(
+                        child: CaustomText(text: Appstrings.sellerScreentitle, color: Appcolors.black, size: GetScreenSize.getScreenWidth(context) * 0.055, maxline: 1, fontWeight: FontWeight.bold)),
+                    GestureDetector(
+                        onTap: () {
+                          // authProvider.signOut();
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SellerOrdersScreen(sellerId: selleruniqueId)));
+                        },
+                        child: Material(
+                            elevation: 4.0,
+                            shape: const CircleBorder(),
+                            shadowColor: Appcolors.black,
+                            child: CircleAvatar(backgroundColor: Appcolors.white, child: Padding(padding: const EdgeInsets.only(left: 1), child: Icon(Icons.shopping_bag, color: Appcolors.black))))),
+                    SizedBox(width: GetScreenSize.getScreenWidth(context) * 0.02),
                     GestureDetector(
                         onTap: () {
                           authProvider.signOut();

@@ -113,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => DetailScreen(
+                                        sellerId: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].sellerId,
                                         img: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].image,
                                         name: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].title,
                                         price: Provider.of<Productprovider>(context, listen: true).featuredproductslist[index].price))),

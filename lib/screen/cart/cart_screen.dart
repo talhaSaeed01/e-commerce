@@ -55,12 +55,6 @@ class _CartScreenState extends State<CartScreen> {
                           BoxShadow(color: Colors.black.withOpacity(0.3), spreadRadius: 2, blurRadius: 4, offset: const Offset(0, 2)),
                         ]),
                         child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                          // Container(
-                          //     width: 92.66,
-                          //     height: 138.86,
-                          //     decoration: BoxDecoration(
-                          //       image: DecorationImage(image: AssetImage(cartItem.img), fit: BoxFit.fill),
-                          //     )),
                           FutureBuilder(
                               future: precacheImage(AssetImage(cartItem.img), context),
                               builder: (context, snapshot) {
@@ -123,6 +117,7 @@ class _CartScreenState extends State<CartScreen> {
               );
             } else {
               await cartProvider.sendCartDataToFirestore(_auth);
+              await cartProvider.sendCartDataToFirestoreForSellerNOde(_auth);
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const CheckOutScreen1()), (Route<dynamic> route) => false);
               cartProvider.cartItems.clear();
             }

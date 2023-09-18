@@ -12,12 +12,14 @@ import 'package:ecommerce/widget/caustom_arrow_backbutton.dart';
 import 'package:ecommerce/widget/caustom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:photo_view/photo_view.dart';
 
 class DetailScreen extends StatefulWidget {
   String img;
   String name;
   String price;
-  DetailScreen({super.key, required this.img, required this.name, required this.price});
+  String sellerId;
+  DetailScreen({super.key, required this.img, required this.name, required this.price, required this.sellerId});
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -44,8 +46,30 @@ class _DetailScreenState extends State<DetailScreen> {
                     top: GetScreenSize.getScreenWidth(context) * 0.02,
                     child: SizedBox(
                         height: GetScreenSize.getScreenWidth(context) * 0.7,
-                        child: CachedNetworkImage(
-                            imageUrl: widget.img, placeholder: (context, url) => const CircularProgressIndicator(), errorWidget: (context, url, error) => const Icon(Icons.error), fit: BoxFit.fill))),
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    elevation: 10,
+                                    content: SizedBox(
+                                        width: GetScreenSize.getScreenWidth(context) * 0.85,
+                                        height: GetScreenSize.getScreenWidth(context) * 0.7,
+                                        child: PhotoView(
+                                            imageProvider: CachedNetworkImageProvider(widget.img),
+                                            minScale: PhotoViewComputedScale.contained,
+                                            maxScale: PhotoViewComputedScale.covered * 1,
+                                            backgroundDecoration: BoxDecoration(color: Appcolors.white))));
+                              },
+                            );
+                          },
+                          child: CachedNetworkImage(
+                              imageUrl: widget.img, placeholder: (context, url) => const CircularProgressIndicator(), errorWidget: (context, url, error) => const Icon(Icons.error), fit: BoxFit.fill),
+                        ))),
                 Positioned(
                     child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -165,7 +189,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ])),
             bottomNavigationBar: GestureDetector(
                 onTap: () {
-                  CartItem cartItem = CartItem(img: widget.img, name: widget.name, price: widget.price);
+                  CartItem cartItem = CartItem(img: widget.img, name: widget.name, price: widget.price, sellerId: widget.sellerId);
                   cartProvider.addItem(cartItem);
                   Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
                 },

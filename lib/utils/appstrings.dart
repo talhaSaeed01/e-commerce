@@ -210,4 +210,5 @@ class Appstrings {
   static var titleController = 'Enter title';
   static var typeController = 'Enter type';
   static var done = "Done";
+  static var sellerOrderstitle = "Seller Orders";
 }

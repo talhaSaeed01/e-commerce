@@ -10,6 +10,7 @@ Future<void> uploadDataToFirestore(List<Product> products) async {
     CollectionReference productsCollection = firestoreInstance.collection('products');
     for (var product in products) {
       await productsCollection.add({
+        'sellerId': product.sellerId,
         'title': product.title,
         'price': product.price,
         'tileColor': product.tileColor.toString(),
@@ -32,7 +33,7 @@ Future<List<Product>> fetchProductsFromFirestore() async {
     List<Product> productList = [];
     querySnapshot.docs.forEach((document) {
       productList.add(Product(document['title'], document['price'], Color(int.parse(document['tileColor'].split('(0x')[1].split(')')[0], radix: 16)),
-          Color(int.parse(document['circleContainerColor'].split('(0x')[1].split(')')[0], radix: 16)), document['image'], document['type']));
+          Color(int.parse(document['circleContainerColor'].split('(0x')[1].split(')')[0], radix: 16)), document['image'], document['type'], document['sellerId']));
     });
     return productList;
   } catch (e) {

@@ -38,7 +38,7 @@ class CartProvider extends ChangeNotifier {
       DocumentReference userDocRef = _firestore.collection('users').doc(userId);
       CollectionReference ordersCollection = userDocRef.collection('orders');
       List<Map<String, dynamic>> cartDataList = cartItems.map((item) {
-        return {'img': item.img, 'name': item.name, 'price': item.price};
+        return {'img': item.img, 'name': item.name, 'price': item.price, 'sellerid': item.sellerId};
       }).toList();
       double total = getTotalPrice();
       double subtotal = calculateSubtotal();
@@ -76,11 +76,53 @@ class CartProvider extends ChangeNotifier {
       }).toList();
     });
   }
+
+  // sending for the seller node........................
+  Future<void> sendCartDataToFirestoreForSellerNOde(String userId) async {
+    try {
+      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+      String orderID = 'order_${DateTime.now().millisecondsSinceEpoch}';
+
+      // Assume you have a 'sellerId' associated with each item in your cart
+      String sellerId = cartItems[0].sellerId; // You may need to modify this to get the appropriate sellerId
+
+      // Reference to the seller's 'orders' subcollection
+      CollectionReference sellerOrdersCollection = _firestore // Use the sellerId associated with the cart items
+          .collection('orders');
+
+      List<Map<String, dynamic>> cartDataList = cartItems.map((item) {
+        return {
+          'img': item.img,
+          'name': item.name,
+          'price': item.price,
+          'sellerid': item.sellerId,
+        };
+      }).toList();
+
+      double total = getTotalPrice();
+      double subtotal = calculateSubtotal();
+
+      Map<String, dynamic> orderData = {
+        'items': cartDataList,
+        'totalPrice': total,
+        'subtotalPrice': subtotal,
+        'timestamp': FieldValue.serverTimestamp(),
+        'status': 'DISPATCHED', // You can change this status as needed
+        'userid': userId,
+      };
+
+      // Add the order document to the seller's 'orders' subcollection
+      await sellerOrdersCollection.doc(orderID).set(orderData);
+    } catch (e) {
+      print('Error sending cart data to Firestore: $e');
+    }
+  }
 }
 
 class CartItem {
   String img;
   String name;
   String price;
-  CartItem({required this.img, required this.name, required this.price});
+  String sellerId;
+  CartItem({required this.img, required this.name, required this.price, required this.sellerId});
 }

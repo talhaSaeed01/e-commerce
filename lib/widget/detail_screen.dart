@@ -52,9 +52,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                                     elevation: 10,
                                     content: SizedBox(
                                         width: GetScreenSize.getScreenWidth(context) * 0.85,

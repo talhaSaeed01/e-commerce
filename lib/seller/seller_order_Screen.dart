@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/provider/seller_provider.dart';
 import 'package:ecommerce/utils/appassets.dart';
@@ -42,7 +43,7 @@ class SellerOrdersScreen extends StatelessWidget {
                     ),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.hasError) {
@@ -53,7 +54,7 @@ class SellerOrdersScreen extends StatelessWidget {
                         final orders = snapshot.data ?? [];
 
                         if (orders.isEmpty) {
-                          return Center(
+                          return const Center(
                             child: Text('No orders found for this seller.'),
                           );
                         }

@@ -82,36 +82,14 @@ class CartProvider extends ChangeNotifier {
     try {
       final FirebaseFirestore _firestore = FirebaseFirestore.instance;
       String orderID = 'order_${DateTime.now().millisecondsSinceEpoch}';
-
-      // Assume you have a 'sellerId' associated with each item in your cart
-      String sellerId = cartItems[0].sellerId; // You may need to modify this to get the appropriate sellerId
-
-      // Reference to the seller's 'orders' subcollection
-      CollectionReference sellerOrdersCollection = _firestore // Use the sellerId associated with the cart items
-          .collection('orders');
-
+      // String sellerId = cartItems[0].sellerId;
+      CollectionReference sellerOrdersCollection = _firestore.collection('orders');
       List<Map<String, dynamic>> cartDataList = cartItems.map((item) {
-        return {
-          'img': item.img,
-          'name': item.name,
-          'price': item.price,
-          'sellerid': item.sellerId,
-        };
+        return {'img': item.img, 'name': item.name, 'price': item.price, 'sellerid': item.sellerId};
       }).toList();
-
       double total = getTotalPrice();
       double subtotal = calculateSubtotal();
-
-      Map<String, dynamic> orderData = {
-        'items': cartDataList,
-        'totalPrice': total,
-        'subtotalPrice': subtotal,
-        'timestamp': FieldValue.serverTimestamp(),
-        'status': 'DISPATCHED', // You can change this status as needed
-        'userid': userId,
-      };
-
-      // Add the order document to the seller's 'orders' subcollection
+      Map<String, dynamic> orderData = {'items': cartDataList, 'totalPrice': total, 'subtotalPrice': subtotal, 'timestamp': FieldValue.serverTimestamp(), 'status': 'DISPATCHED', 'userid': userId};
       await sellerOrdersCollection.doc(orderID).set(orderData);
     } catch (e) {
       print('Error sending cart data to Firestore: $e');

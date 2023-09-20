@@ -22,7 +22,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return SafeArea(
         child: Scaffold(
             body: Stack(children: [
-      // SizedBox(height: double.infinity, width: double.infinity, child: Image.asset(Appassets.welcomebackgroundimage, fit: BoxFit.fitHeight)),
       SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -51,18 +50,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   text: Appstrings.riderscreen,
                   textcolor: Appcolors.white,
                   buttoncolor: Appcolors.white.withOpacity(0.25)))),
-      // Positioned(
-      //     bottom: GetScreenSize.getScreenWidth(context) * 0.4,
-      //     left: GetScreenSize.getScreenWidth(context) * 0.21,
-      //     child: GestureDetector(
-      //         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RiderPannel())),
-      //         child: CustomTextButton(
-      //             bordercolor: Appcolors.white,
-      //             hieght: GetScreenSize.getScreenWidth(context) * 0.13,
-      //             width: GetScreenSize.getScreenWidth(context) * 0.52,
-      //             text: Appstrings.sellerScreenbutton,
-      //             textcolor: Appcolors.white,
-      //             buttoncolor: Appcolors.white.withOpacity(0.25)))),
       Positioned(
           bottom: GetScreenSize.getScreenWidth(context) * 0.08,
           left: GetScreenSize.getScreenWidth(context) * 0.21,

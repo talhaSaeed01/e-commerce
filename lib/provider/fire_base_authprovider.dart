@@ -65,22 +65,6 @@ class AuthProvider with ChangeNotifier {
         SnackBar(action: SnackBarAction(label: 'Done', textColor: Appcolors.white, onPressed: () {}), content: Text(message, style: TextStyle(fontWeight: FontWeight.bold, color: Appcolors.white))));
   }
 
-//Funcation to show signin
-  // Future<void> signIn(String email, String password, BuildContext context) async {
-  //   try {
-  //     if (email.trim().isEmpty || password.trim().isEmpty) {
-  //       showSnackBar(context, 'Enter email and password');
-  //     } else {
-  //       final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-  //       if (userCredential.user != null) {
-  //         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => Bottomnavbardesgin(userid: userCredential.user!.uid)), (Route<dynamic> route) => false);
-  //       }
-  //     }
-  //   } catch (e) {
-  //     print('Error signing in: $e');
-  //     showSnackBar(context, 'Error signing in: $e');
-  //   }
-  // }
   Future<void> signIn(String email, String password, BuildContext context) async {
     try {
       if (email.trim().isEmpty || password.trim().isEmpty) {
